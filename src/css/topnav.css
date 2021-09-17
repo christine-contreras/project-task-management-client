@@ -1,0 +1,21 @@
+.MuiAvatar-circular {
+    margin: 0 10px;
+}
+
+.search-bar{
+    display: flex;
+    flex-grow: 1;
+    align-items: flex-end;
+    margin: 0 1em;
+    background: #fff;
+    padding: 0 1em;
+    max-width: 1000px;
+}
+
+.search-bar .MuiTextField-root {
+    width: 100%;
+}
+
+.search-bar .MuiInput-underline:before {
+border: none;
+}

@@ -1,0 +1,17 @@
+.MuiPaper-rounded.container-paper{
+    display: flex;
+    flex-direction: column;
+    border-radius: 32px;
+    padding: 2em;
+}
+
+.b-radius{
+    border-radius: 32px;
+}
+
+
+.flex{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
