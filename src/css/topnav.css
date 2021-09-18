@@ -5,8 +5,8 @@
 .search-bar{
     display: flex;
     flex-grow: 1;
-    align-items: flex-end;
-    margin: 0 1em;
+    align-items: center;
+    margin: 0;
     background: #fff;
     padding: 0 1em;
     max-width: 1000px;
@@ -18,4 +18,11 @@
 
 .search-bar .MuiInput-underline:before {
 border: none;
+}
+
+@media (min-width: 600px) {
+    .search-bar{
+        margin: 0 1em;
+        padding: 0 2em;
+    } 
 }

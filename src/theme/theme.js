@@ -23,43 +23,38 @@ const theme = createTheme({
     },
   },
   typography: {
+    fontFamily: '"DM Sans", sans-serif',
     h1: {
-      fontFamily: '"Montserrat", Helvetica, Arial, sans-serif',
-      fontWeight: 600,
+      fontWeight: 700,
       fontSize: '5em',
     },
     h2: {
-      fontFamily: '"Montserrat", Helvetica, Arial, sans-serif',
-      fontWeight: 600,
+      fontWeight: 700,
       fontSize: '3.75em',
     },
     h3: {
-      fontFamily: '"Montserrat", Helvetica, Arial, sans-serif',
-      fontWeight: 600,
+      fontWeight: 700,
       fontSize: '3em',
     },
     h4: {
-      fontFamily: '"Montserrat", Helvetica, Arial, sans-serif',
-      fontWeight: 600,
+      fontWeight: 700,
     },
     h5: {
-      fontFamily: '"Montserrat", Helvetica, Arial, sans-serif',
-      fontWeight: 600,
+      fontWeight: 700,
     },
     h6: {
-      fontFamily: '"Montserrat", Helvetica, Arial, sans-serif',
-      fontWeight: 600,
+      fontWeight: 700,
       fontSize: '1.25em',
     },
-    subtitle1: {
-      // fontWeight: 100,
-      fontSize: '1.25em',
-    },
-    body2: {
-      fontWeight: 100,
-      fontSize: '1em',
-      lineHeight: 1.5,
-    },
+    // subtitle1: {
+    //   // fontWeight: 100,
+    //   fontSize: '1.25em',
+    // },
+    // body2: {
+    //   fontWeight: 100,
+    //   fontSize: '1em',
+    //   lineHeight: 1.5,
+    // },
   },
 })
 
