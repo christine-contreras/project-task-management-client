@@ -16,12 +16,20 @@ const App = () => {
     setMode(!mode)
   }
 
+  const [projects, setProjects] = React.useState([])
+
+  React.useEffect(() => {
+    fetch('http://localhost:9393/projects')
+      .then((res) => res.json())
+      .then((data) => setProjects(data.projects))
+  })
+
   return (
     <ThemeProvider theme={appliedTheme}>
       <Box sx={{ display: 'flex' }}>
         <CssBaseline />
         <Router>
-          <Layout toggleTheme={toggleTheme} mode={mode}>
+          <Layout toggleTheme={toggleTheme} mode={mode} projects={projects}>
             <Route
               exact
               path='/projects'

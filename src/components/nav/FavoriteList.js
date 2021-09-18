@@ -1,16 +1,18 @@
 import * as React from 'react'
 import List from '@mui/material/List'
+import ListItem from '@mui/material/ListItem'
 import ListItemIcon from '@mui/material/ListItemIcon'
 import ListItemText from '@mui/material/ListItemText'
 import ListItemButton from '@mui/material/ListItemButton'
 import DashboardIcon from '@mui/icons-material/Dashboard'
 import Collapse from '@mui/material/Collapse'
+import InboxIcon from '@mui/icons-material/MoveToInbox'
 
 import ExpandLess from '@mui/icons-material/ExpandLess'
 import ExpandMore from '@mui/icons-material/ExpandMore'
-import StarBorder from '@mui/icons-material/StarBorder'
+import Star from '@mui/icons-material/Star'
 
-export const MainList = () => {
+export const FavoritesList = ({ list }) => {
   const [open, setOpen] = React.useState(true)
 
   const handleClick = () => {
@@ -21,22 +23,28 @@ export const MainList = () => {
     <>
       <List>
         <ListItemButton onClick={handleClick}>
-          <ListItemText primary='Projects' />
+          <ListItemText primary='Favorites' />
           {open ? <ExpandLess /> : <ExpandMore />}
         </ListItemButton>
         <Collapse in={open} timeout='auto' unmountOnExit>
-          <List component='div' disablePadding>
-            <ListItemButton sx={{ pl: 4 }}>
-              <ListItemIcon>
-                <DashboardIcon />
-              </ListItemIcon>
-              <ListItemText primary='Project 1' />
-            </ListItemButton>
-          </List>
+          {list
+            ? list.map((item) => {
+                return (
+                  <List component='div' disablePadding>
+                    <ListItemButton sx={{ pl: 4 }}>
+                      <ListItemIcon>
+                        <Star />
+                      </ListItemIcon>
+                      <ListItemText primary={item.title} />
+                    </ListItemButton>
+                  </List>
+                )
+              })
+            : null}
         </Collapse>
       </List>
     </>
   )
 }
 
-export default MainList
+export default FavoritesList

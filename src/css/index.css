@@ -8,7 +8,7 @@
     padding: 2em;
 }
 
-.b-radius{
+.b-radius, .b-radius.MuiPaper-root{
     border-radius: 32px;
 }
 

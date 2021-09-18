@@ -96,7 +96,11 @@ const TopNav = ({ open, toggleDrawer, toggleTheme, mode }) => {
           </Badge>
         </IconButton>
         <Avatar src='https://lh3.googleusercontent.com/ogw/ADea4I7CeY53aWLoZ7OatzmqDINKOArp3Y1kU8BM2CwFuw=s32-c-mo' />
-        <Typography component='h2' variant='h6' className='letter-spacing'>
+        <Typography
+          component='h2'
+          variant='h6'
+          className='letter-spacing'
+          sx={{ display: { xs: 'none', sm: 'block' } }}>
           Christine
         </Typography>
       </Toolbar>

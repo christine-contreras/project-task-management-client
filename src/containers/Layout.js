@@ -9,7 +9,7 @@ import SideNav from '../components/nav/SideNav'
 
 const drawerWidth = 240
 
-const Layout = ({ children, toggleTheme, mode }) => {
+const Layout = ({ children, toggleTheme, mode, projects }) => {
   const [open, setOpen] = React.useState(false)
 
   const toggleDrawer = () => {
@@ -24,7 +24,7 @@ const Layout = ({ children, toggleTheme, mode }) => {
         toggleTheme={toggleTheme}
         mode={mode}
       />
-      <SideNav open={open} toggleDrawer={toggleDrawer} />
+      <SideNav open={open} toggleDrawer={toggleDrawer} projects={projects} />
 
       <Box
         component='main'

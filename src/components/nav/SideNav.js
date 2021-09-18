@@ -1,7 +1,7 @@
 import * as React from 'react'
 import '../../css/sidenav.css'
-import MainList from './MainList'
-import SecondaryList from './SecondaryList'
+import ProjectList from './Projectlist'
+import FavoriteList from './FavoriteList'
 
 import MuiDrawer from '@mui/material/Drawer'
 import Toolbar from '@mui/material/Toolbar'
@@ -10,9 +10,13 @@ import { Typography } from '@mui/material'
 
 const drawerWidth = 240
 
-const SideNav = ({ open, toggleDrawer, window }) => {
+const SideNav = ({ open, toggleDrawer, window, projects }) => {
   const container =
     window !== undefined ? () => window().document.body : undefined
+
+  const favorites = projects
+    ? projects.filter((project) => project.favorite === true)
+    : []
 
   return (
     <>
@@ -73,9 +77,10 @@ const SideNav = ({ open, toggleDrawer, window }) => {
           </Typography>
         </Toolbar>
         <Divider />
-        <MainList />
+        <FavoriteList list={favorites} />
         <Divider />
-        <SecondaryList />
+
+        <ProjectList list={projects} />
       </MuiDrawer>
 
       <MuiDrawer
@@ -135,8 +140,8 @@ const SideNav = ({ open, toggleDrawer, window }) => {
           </Typography>
         </Toolbar>
 
-        <MainList />
-        <SecondaryList />
+        <FavoriteList list={favorites} />
+        <ProjectList list={projects} />
       </MuiDrawer>
     </>
   )

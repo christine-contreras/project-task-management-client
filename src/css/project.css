@@ -1,0 +1,6 @@
+
+.project-card .MuiCardActionArea-root{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
