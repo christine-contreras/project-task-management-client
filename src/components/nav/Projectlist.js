@@ -28,7 +28,10 @@ export const ProjectList = ({ list }) => {
           {list
             ? list.map((item) => {
                 return (
-                  <List component='div' disablePadding>
+                  <List
+                    component='div'
+                    disablePadding
+                    key={`menuitem-${item.id}`}>
                     <ListItemButton sx={{ pl: 4 }}>
                       <ListItemIcon>
                         <DashboardIcon />

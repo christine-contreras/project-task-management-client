@@ -30,7 +30,10 @@ export const FavoritesList = ({ list }) => {
           {list
             ? list.map((item) => {
                 return (
-                  <List component='div' disablePadding>
+                  <List
+                    component='div'
+                    disablePadding
+                    key={`favorite-${item.id}`}>
                     <ListItemButton sx={{ pl: 4 }}>
                       <ListItemIcon>
                         <Star />

@@ -33,7 +33,9 @@ const App = () => {
             <Route
               exact
               path='/projects'
-              render={(routerProps) => <Projects {...routerProps} />}
+              render={(routerProps) => (
+                <Projects {...routerProps} projects={projects} />
+              )}
             />
           </Layout>
         </Router>

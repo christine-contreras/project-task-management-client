@@ -2,14 +2,18 @@ import React from 'react'
 import Project from '../components/project/Project'
 import { Typography } from '@mui/material'
 import { Grid } from '@mui/material'
-const Projects = () => {
+const Projects = ({ projects }) => {
   return (
     <>
       <Typography variant='h2' gutterBottom>
         Projects
       </Typography>
       <Grid container spacing={2}>
-        <Project />
+        {projects
+          ? projects.map((project) => (
+              <Project project={project} key={`projectcard-${project.id}`} />
+            ))
+          : null}
       </Grid>
     </>
   )
