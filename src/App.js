@@ -39,7 +39,19 @@ const App = () => {
         favorite: project.favorite,
         title: project.title,
       }),
-    }).then(console.log)
+    })
+  }
+
+  const handleDeleteProject = (deleteProject) => {
+    const updatedProjects = projects.filter(
+      (project) => project.id !== deleteProject.id
+    )
+
+    fetch(`http://localhost:9393/projects/${deleteProject.id}`, {
+      method: 'DELETE',
+    })
+
+    setProjects(updatedProjects)
   }
 
   const handleFavoringAProject = (favProject) => {
@@ -67,6 +79,7 @@ const App = () => {
                   {...routerProps}
                   projects={projects}
                   handleFavoringAProject={handleFavoringAProject}
+                  handleDeleteProject={handleDeleteProject}
                 />
               )}
             />

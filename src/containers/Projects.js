@@ -2,7 +2,11 @@ import React from 'react'
 import Project from '../components/project/Project'
 import { Typography } from '@mui/material'
 import { Grid } from '@mui/material'
-const Projects = ({ projects, handleFavoringAProject }) => {
+const Projects = ({
+  projects,
+  handleFavoringAProject,
+  handleDeleteProject,
+}) => {
   return (
     <>
       <Typography variant='h2' gutterBottom>
@@ -15,6 +19,7 @@ const Projects = ({ projects, handleFavoringAProject }) => {
                 project={project}
                 key={`projectcard-${project.id}`}
                 handleFavoringAProject={handleFavoringAProject}
+                handleDeleteProject={handleDeleteProject}
               />
             ))
           : null}

@@ -26,7 +26,7 @@ function LinearProgressWithLabel(props) {
   )
 }
 
-const Project = ({ project, handleFavoringAProject }) => {
+const Project = ({ project, handleFavoringAProject, handleDeleteProject }) => {
   const [progress, setProgress] = React.useState(10)
   const [moreAnchorEl, setMoreAnchorEl] = React.useState(null)
 
@@ -61,7 +61,7 @@ const Project = ({ project, handleFavoringAProject }) => {
         </IconButton>
         <p>Edit Project Details</p>
       </MenuItem>
-      <MenuItem>
+      <MenuItem onClick={() => handleDeleteProject(project)}>
         <IconButton size='large' aria-label='edit project' color='inherit'>
           <DeleteIcon />
         </IconButton>
