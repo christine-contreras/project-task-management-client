@@ -26,7 +26,7 @@ function LinearProgressWithLabel(props) {
   )
 }
 
-const Project = ({ project }) => {
+const Project = ({ project, handleFavoringAProject }) => {
   const [progress, setProgress] = React.useState(10)
   const [moreAnchorEl, setMoreAnchorEl] = React.useState(null)
 
@@ -74,7 +74,7 @@ const Project = ({ project }) => {
     <Grid item xs={12} sm={12} md={6} lg={4}>
       <Card className='b-radius project-card'>
         <CardActionArea>
-          <IconButton>
+          <IconButton onClick={() => handleFavoringAProject(project)}>
             {project.favorite ? <StarIcon /> : <StarBorderIcon />}
           </IconButton>
           <IconButton

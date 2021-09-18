@@ -19,10 +19,39 @@ const App = () => {
   const [projects, setProjects] = React.useState([])
 
   React.useEffect(() => {
+    fetchProjects()
+  }, [])
+
+  const fetchProjects = () => {
     fetch('http://localhost:9393/projects')
       .then((res) => res.json())
       .then((data) => setProjects(data.projects))
-  })
+  }
+
+  const patchProjects = (project) => {
+    fetch(`http://localhost:9393/projects/${project.id}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        accept: 'application/json',
+      },
+      body: JSON.stringify({
+        favorite: project.favorite,
+        title: project.title,
+      }),
+    }).then(console.log)
+  }
+
+  const handleFavoringAProject = (favProject) => {
+    const updatefavProject = { ...favProject, favorite: !favProject.favorite }
+
+    patchProjects(updatefavProject)
+
+    const updatedProjects = projects.map((project) =>
+      project.id === favProject.id ? updatefavProject : project
+    )
+    setProjects(updatedProjects)
+  }
 
   return (
     <ThemeProvider theme={appliedTheme}>
@@ -34,7 +63,11 @@ const App = () => {
               exact
               path='/projects'
               render={(routerProps) => (
-                <Projects {...routerProps} projects={projects} />
+                <Projects
+                  {...routerProps}
+                  projects={projects}
+                  handleFavoringAProject={handleFavoringAProject}
+                />
               )}
             />
           </Layout>
