@@ -9,7 +9,7 @@ import SideNav from '../components/nav/SideNav'
 
 const drawerWidth = 240
 
-const Layout = ({ children }) => {
+const Layout = ({ children, toggleTheme, mode }) => {
   const [open, setOpen] = React.useState(false)
 
   const toggleDrawer = () => {
@@ -18,7 +18,12 @@ const Layout = ({ children }) => {
 
   return (
     <>
-      <TopNav open={open} toggleDrawer={toggleDrawer} />
+      <TopNav
+        open={open}
+        toggleDrawer={toggleDrawer}
+        toggleTheme={toggleTheme}
+        mode={mode}
+      />
       <SideNav open={open} toggleDrawer={toggleDrawer} />
 
       <Box
@@ -36,7 +41,6 @@ const Layout = ({ children }) => {
         <Toolbar />
         <Container maxWidth='xl' sx={{ flexGrow: 1, p: 3 }}>
           <Grid container spacing={3}>
-            {/* Chart */}
             <Grid item xs={12}>
               <Paper className='container-paper'>{children}</Paper>
             </Grid>

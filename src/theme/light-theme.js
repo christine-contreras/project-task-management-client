@@ -1,9 +1,8 @@
 import { createTheme } from '@mui/material/styles'
-// import { brown } from '@mui/material/colors'
 
 //https://material-ui.com/customization/default-theme/#default-theme
 //https://material-ui.com/customization/color/#color
-const theme = createTheme({
+export const lightTheme = createTheme({
   palette: {
     mode: 'light',
     // primary: {
@@ -20,6 +19,7 @@ const theme = createTheme({
     // },
     background: {
       default: '#f3f6fd',
+      // paper: '#f3f6fd',
     },
   },
   typography: {
@@ -46,16 +46,7 @@ const theme = createTheme({
       fontWeight: 700,
       fontSize: '1.25em',
     },
-    // subtitle1: {
-    //   // fontWeight: 100,
-    //   fontSize: '1.25em',
-    // },
-    // body2: {
-    //   fontWeight: 100,
-    //   fontSize: '1em',
-    //   lineHeight: 1.5,
-    // },
   },
 })
 
-export default theme
+export default lightTheme

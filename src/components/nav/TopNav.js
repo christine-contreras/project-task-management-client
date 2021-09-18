@@ -5,16 +5,20 @@ import Toolbar from '@mui/material/Toolbar'
 import Typography from '@mui/material/Typography'
 import Badge from '@mui/material/Badge'
 import Avatar from '@mui/material/Avatar'
-import { Box } from '@mui/system'
 import TextField from '@mui/material/TextField'
 import IconButton from '@mui/material/IconButton'
 import MenuIcon from '@mui/icons-material/Menu'
 import NotificationsOutlinedIcon from '@mui/icons-material/NotificationsOutlined'
 import SearchIcon from '@mui/icons-material/Search'
+import Brightness2Icon from '@mui/icons-material/Brightness2'
+import Brightness7Icon from '@mui/icons-material/Brightness7'
 
 const drawerWidth = 240
 
-const TopNav = ({ open, toggleDrawer }) => {
+const TopNav = ({ open, toggleDrawer, toggleTheme, mode }) => {
+  const icon = !mode ? <Brightness7Icon /> : <Brightness2Icon />
+  //const icon = <Brightness7Icon />
+
   return (
     <MuiAppBar
       color='transparent'
@@ -77,6 +81,14 @@ const TopNav = ({ open, toggleDrawer }) => {
           <TextField label='Search' variant='standard' />
           <SearchIcon />
         </div>
+
+        <IconButton
+          edge='end'
+          color='inherit'
+          aria-label='mode'
+          onClick={toggleTheme}>
+          {icon}
+        </IconButton>
 
         <IconButton color='inherit'>
           <Badge badgeContent={4} color='secondary'>
