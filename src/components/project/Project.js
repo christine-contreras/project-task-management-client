@@ -13,7 +13,7 @@ import DeleteIcon from '@mui/icons-material/Delete'
 
 function LinearProgressWithLabel(props) {
   return (
-    <Box sx={{ display: 'flex', alignItems: 'center' }}>
+    <Box className='flex'>
       <Box sx={{ width: '100%', mr: 1 }}>
         <LinearProgress variant='determinate' {...props} />
       </Box>
@@ -27,9 +27,15 @@ function LinearProgressWithLabel(props) {
 }
 
 const Project = ({ project, handleFavoringAProject, handleDeleteProject }) => {
-  const [progress, setProgress] = React.useState(10)
-  const [moreAnchorEl, setMoreAnchorEl] = React.useState(null)
+  const { tasks } = project
+  const completedTasks = tasks.filter((task) => task.completed === true)
+  const progress =
+    completedTasks.length === 0
+      ? 0
+      : (completedTasks.length / tasks.length) * 100
+  //const progress = completedTasks.length
 
+  const [moreAnchorEl, setMoreAnchorEl] = React.useState(null)
   const isMenuOpen = Boolean(moreAnchorEl)
 
   const handleMenuOpen = (event) => {

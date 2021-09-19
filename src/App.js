@@ -9,6 +9,7 @@ import Layout from './containers/Layout'
 import Box from '@mui/material/Box'
 
 const App = () => {
+  // handle dark mode
   const [mode, setMode] = React.useState(true)
   const appliedTheme = createTheme(mode ? lightTheme : darkTheme)
 
@@ -16,6 +17,7 @@ const App = () => {
     setMode(!mode)
   }
 
+  // handle projects
   const [projects, setProjects] = React.useState([])
 
   React.useEffect(() => {

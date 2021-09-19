@@ -77,7 +77,9 @@ const TopNav = ({ open, toggleDrawer, toggleTheme, mode }) => {
             </svg>
           </span>
         </Typography>
-        <div className='search-bar b-radius'>
+        <div
+          className='search-bar b-radius'
+          style={{ background: !mode ? '#212121' : '#fff' }}>
           <TextField label='Search' variant='standard' />
           <SearchIcon />
         </div>
