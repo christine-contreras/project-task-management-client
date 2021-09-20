@@ -34,7 +34,7 @@ export const ProjectList = ({ list }) => {
                     component='div'
                     disablePadding
                     key={`menuitem-${item.id}`}>
-                    <Link className='link' to={`/projects/${item.id}`}>
+                    <Link className='link' to={`/projects/${item.id}`} exact>
                       <ListItemButton sx={{ pl: 4 }}>
                         <ListItemIcon>
                           <DashboardIcon

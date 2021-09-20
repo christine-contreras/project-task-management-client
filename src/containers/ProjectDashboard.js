@@ -18,10 +18,11 @@ const ProjectDashboard = ({
     fetch(`http://localhost:9393/projects/${match.params.id}`)
       .then((res) => res.json())
       .then((data) => setProject(data.project))
-  }, [])
+  }, [match.params.id])
 
   const handleFavoringAProject = () => {
     const updatefavProject = { ...project, favorite: !project.favorite }
+    setProject(updatefavProject)
 
     handleUpdatingProject(updatefavProject)
   }
@@ -35,7 +36,10 @@ const ProjectDashboard = ({
           <Box className='flex'>
             <Tooltip
               title={project.favorite ? 'Remove Favorite' : 'Add Favorite'}>
-              <IconButton onClick={handleFavoringAProject} size='large'>
+              <IconButton
+                onClick={handleFavoringAProject}
+                size='large'
+                sx={{ color: currentColorScheme.colorDark }}>
                 {project.favorite ? (
                   <StarIcon fontSize='large' />
                 ) : (
