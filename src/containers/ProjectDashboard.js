@@ -2,6 +2,7 @@ import * as React from 'react'
 import { ProjectColors } from '../components/ProjectColors'
 import ProjectMenu from '../components/project/ProjectMenu'
 import ProjectModal from '../components/modal/ProjectModal'
+import Boards from './Boards'
 import { Typography, Grid, Tooltip, IconButton, Box } from '@mui/material'
 import MoreVertIcon from '@mui/icons-material/MoreVert'
 import StarBorderIcon from '@mui/icons-material/StarBorder'
@@ -11,7 +12,6 @@ const ProjectDashboard = ({
   match,
   history,
   mode,
-  patchProject,
   handleUpdatingProject,
   handleDeleteProject,
 }) => {
@@ -44,7 +44,7 @@ const ProjectDashboard = ({
   //get colors for project
   const currentColorScheme = ProjectColors(project)
 
-  //menu to see more options
+  //project menu to see more options
   const [moreAnchorEl, setMoreAnchorEl] = React.useState(null)
   const isMenuOpen = Boolean(moreAnchorEl)
   const handleMenuOpen = (event) => {
@@ -54,7 +54,7 @@ const ProjectDashboard = ({
     setMoreAnchorEl(null)
   }
 
-  //handle edit modal
+  //project edit modal
   const [openModal, setOpenModal] = React.useState(false)
   const handleOpenModel = () => setOpenModal(true)
   const handleCloseModel = () => setOpenModal(false)
@@ -62,59 +62,70 @@ const ProjectDashboard = ({
   return (
     <>
       {project && (
-        <Grid container alignContent='center' justifyContent='space-between'>
-          <Box className='flex'>
-            <Tooltip
-              title={project.favorite ? 'Remove Favorite' : 'Add Favorite'}>
-              <IconButton
-                onClick={handleFavoringAProject}
-                size='large'
-                sx={{
-                  color: currentColorScheme
-                    ? currentColorScheme.colorDark
-                    : 'inherit',
-                }}>
-                {project.favorite ? (
-                  <StarIcon fontSize='large' />
-                ) : (
-                  <StarBorderIcon fontSize='large' />
-                )}
-              </IconButton>
-            </Tooltip>
-            <Typography variant='h3' component='h2'>
-              {project.title}
-            </Typography>
-          </Box>
+        <>
+          <Grid container>
+            <Grid
+              item
+              container
+              alignContent='center'
+              justifyContent='space-between'
+              sx={{ pb: 6 }}>
+              <Box className='flex'>
+                <Tooltip
+                  title={project.favorite ? 'Remove Favorite' : 'Add Favorite'}>
+                  <IconButton
+                    onClick={handleFavoringAProject}
+                    size='large'
+                    sx={{
+                      color: currentColorScheme
+                        ? currentColorScheme.colorDark
+                        : 'inherit',
+                    }}>
+                    {project.favorite ? (
+                      <StarIcon fontSize='large' />
+                    ) : (
+                      <StarBorderIcon fontSize='large' />
+                    )}
+                  </IconButton>
+                </Tooltip>
+                <Typography variant='h3' component='h2'>
+                  {project.title}
+                </Typography>
+              </Box>
 
-          <Box className='flex'>
-            <Tooltip title='Project Options'>
-              <IconButton
-                aria-label='show options'
-                aria-controls='project-options'
-                aria-haspopup='true'
-                onClick={handleMenuOpen}>
-                <MoreVertIcon />
-              </IconButton>
-            </Tooltip>
-          </Box>
+              <Box className='flex'>
+                <Tooltip title='Project Options'>
+                  <IconButton
+                    aria-label='show options'
+                    aria-controls='project-options'
+                    aria-haspopup='true'
+                    onClick={handleMenuOpen}>
+                    <MoreVertIcon />
+                  </IconButton>
+                </Tooltip>
+              </Box>
 
-          <ProjectMenu
-            moreAnchorEl={moreAnchorEl}
-            isMenuOpen={isMenuOpen}
-            handleMenuClose={handleMenuClose}
-            handleOpenModel={handleOpenModel}
-            handleDeleteProject={handleDelete}
-            project={project}
-          />
+              <ProjectMenu
+                moreAnchorEl={moreAnchorEl}
+                isMenuOpen={isMenuOpen}
+                handleMenuClose={handleMenuClose}
+                handleOpenModel={handleOpenModel}
+                handleDeleteProject={handleDelete}
+                project={project}
+              />
 
-          <ProjectModal
-            project={project}
-            openModal={openModal}
-            handleCloseModel={handleCloseModel}
-            handleUpdatingProject={handleChange}
-            mode={mode}
-          />
-        </Grid>
+              <ProjectModal
+                project={project}
+                openModal={openModal}
+                handleCloseModel={handleCloseModel}
+                handleUpdatingProject={handleChange}
+                mode={mode}
+              />
+            </Grid>
+
+            <Boards boards={boards} />
+          </Grid>
+        </>
       )}
     </>
   )

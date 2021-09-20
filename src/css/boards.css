@@ -1,0 +1,9 @@
+.boards-container.MuiGrid-root{
+    display: flex;
+    flex-flow: row nowrap;
+    overflow-x: scroll;
+}
+
+.boards-container div:not(:last-child){
+    padding-right: 4em;
+}
