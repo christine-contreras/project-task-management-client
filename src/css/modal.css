@@ -1,0 +1,32 @@
+.modal {
+position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.modal-body{
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-30%, -50%);
+    width: 90%;
+    max-width: 500px;
+    padding: 2em;
+}
+
+.details-form{
+    padding-top: 2em;
+}
+
+.form.MuiFormLabel-root{
+    padding: 1em 0;
+}
+
+.details-form .MuiFormControl-root{
+    padding-bottom: 2em;
+}
+
+.details-form .MuiFormControlLabel-root{
+    margin-left: 0;
+    margin-right: 5px;
+}

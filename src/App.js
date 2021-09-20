@@ -56,13 +56,11 @@ const App = () => {
     setProjects(updatedProjects)
   }
 
-  const handleFavoringAProject = (favProject) => {
-    const updatefavProject = { ...favProject, favorite: !favProject.favorite }
-
-    patchProjects(updatefavProject)
+  const handleUpdatingProject = (changedProject) => {
+    patchProjects(changedProject)
 
     const updatedProjects = projects.map((project) =>
-      project.id === favProject.id ? updatefavProject : project
+      project.id === changedProject.id ? changedProject : project
     )
     setProjects(updatedProjects)
   }
@@ -80,7 +78,9 @@ const App = () => {
                 <Projects
                   {...routerProps}
                   projects={projects}
-                  handleFavoringAProject={handleFavoringAProject}
+                  mode={mode}
+                  patchProjects={patchProjects}
+                  handleUpdatingProject={handleUpdatingProject}
                   handleDeleteProject={handleDeleteProject}
                 />
               )}

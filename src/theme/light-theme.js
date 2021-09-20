@@ -17,6 +17,9 @@ export const lightTheme = createTheme({
     //   // dark: '#b90076',
     //   contrastText: '#fff',
     // },
+    text: {
+      primary: '#1f1c2e',
+    },
     background: {
       default: '#f3f6fd',
       // paper: '#f3f6fd',

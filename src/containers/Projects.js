@@ -4,7 +4,8 @@ import { Typography } from '@mui/material'
 import { Grid } from '@mui/material'
 const Projects = ({
   projects,
-  handleFavoringAProject,
+  mode,
+  handleUpdatingProject,
   handleDeleteProject,
 }) => {
   return (
@@ -16,9 +17,10 @@ const Projects = ({
         {projects
           ? projects.map((project) => (
               <Project
+                mode={mode}
                 project={project}
                 key={`projectcard-${project.id}`}
-                handleFavoringAProject={handleFavoringAProject}
+                handleUpdatingProject={handleUpdatingProject}
                 handleDeleteProject={handleDeleteProject}
               />
             ))
