@@ -11,7 +11,6 @@ import InboxIcon from '@mui/icons-material/MoveToInbox'
 import ExpandLess from '@mui/icons-material/ExpandLess'
 import ExpandMore from '@mui/icons-material/ExpandMore'
 import Star from '@mui/icons-material/Star'
-
 export const FavoritesList = ({ list }) => {
   const [open, setOpen] = React.useState(true)
 

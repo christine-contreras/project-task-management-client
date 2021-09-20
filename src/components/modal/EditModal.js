@@ -1,24 +1,16 @@
 import * as React from 'react'
 import '../../css/modal.css'
-
-import {
-  Typography,
-  Modal,
-  TextField,
-  Button,
-  FormControl,
-  Radio,
-  FormLabel,
-  RadioGroup,
-  FormControlLabel,
-} from '@mui/material'
+import { palette } from '../palette'
+import TitleField from './TitleField'
+import ColorPicker from './ColorPicker'
+import { SaveButton } from './SaveButton'
+import { Typography, Modal } from '@mui/material'
 
 const EditModal = ({
   openModal,
   handleCloseModel,
   mode,
   project,
-  colors,
   handleUpdatingProject,
 }) => {
   const [title, setTitle] = React.useState(project.title)
@@ -28,6 +20,8 @@ const EditModal = ({
 
     const updatedProject = { ...project, title: title, color: color }
     handleUpdatingProject(updatedProject)
+
+    handleCloseModel()
   }
 
   return (
@@ -53,36 +47,14 @@ const EditModal = ({
           autoComplete='off'
           onSubmit={handleSubmit}
           className='form details-form'>
-          <TextField
-            onChange={(e) => setTitle(e.target.value)}
-            value={title}
-            label='Project Title'
-            variant='outlined'
-            color='secondary'
-            fullWidth
+          <TitleField
+            title={title}
+            setTitle={setTitle}
+            labelName='Project Title'
           />
+          <ColorPicker colors={palette} color={color} setColor={setColor} />
 
-          <FormControl xs={{ pb: 2 }}>
-            <FormLabel>Project Color</FormLabel>
-            <RadioGroup
-              className='flex row'
-              value={color}
-              onChange={(e) => setColor(e.target.value)}>
-              {colors.map((color) => (
-                <FormControlLabel
-                  control={<Radio />}
-                  value={color.color}
-                  label=''
-                  sx={{
-                    backgroundColor: color.color,
-                  }}
-                />
-              ))}
-            </RadioGroup>
-          </FormControl>
-          <Button type='submit' color='primary' variant='contained'>
-            Save Project
-          </Button>
+          <SaveButton title='Save Project' />
         </form>
       </div>
     </Modal>

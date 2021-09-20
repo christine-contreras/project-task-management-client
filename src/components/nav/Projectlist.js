@@ -1,11 +1,11 @@
 import * as React from 'react'
+import { ProjectColors } from '../ProjectColors'
 import List from '@mui/material/List'
 import ListItemIcon from '@mui/material/ListItemIcon'
 import ListItemText from '@mui/material/ListItemText'
 import ListItemButton from '@mui/material/ListItemButton'
 import DashboardIcon from '@mui/icons-material/Dashboard'
 import Collapse from '@mui/material/Collapse'
-
 import ExpandLess from '@mui/icons-material/ExpandLess'
 import ExpandMore from '@mui/icons-material/ExpandMore'
 import StarBorder from '@mui/icons-material/StarBorder'
@@ -27,6 +27,7 @@ export const ProjectList = ({ list }) => {
         <Collapse in={open} timeout='auto' unmountOnExit>
           {list
             ? list.map((item) => {
+                const currentColorScheme = ProjectColors(item)
                 return (
                   <List
                     component='div'
@@ -34,7 +35,9 @@ export const ProjectList = ({ list }) => {
                     key={`menuitem-${item.id}`}>
                     <ListItemButton sx={{ pl: 4 }}>
                       <ListItemIcon>
-                        <DashboardIcon />
+                        <DashboardIcon
+                          style={{ color: currentColorScheme.colorDark }}
+                        />
                       </ListItemIcon>
                       <ListItemText primary={item.title} />
                     </ListItemButton>

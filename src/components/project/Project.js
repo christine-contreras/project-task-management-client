@@ -1,8 +1,9 @@
 import * as React from 'react'
 import '../../css/project.css'
-import { colors } from '../colors'
-import EditModal from './EditModal'
+import { ProjectColors } from '../ProjectColors'
+import EditModal from '../modal/EditModal'
 import ProjectMenu from './ProjectMenu'
+import LinearProgressWithLabel from './LinearProgressWithLabel'
 import {
   Card,
   CardContent,
@@ -15,31 +16,8 @@ import {
 import MoreVertIcon from '@mui/icons-material/MoreVert'
 import StarBorderIcon from '@mui/icons-material/StarBorder'
 import StarIcon from '@mui/icons-material/Star'
-import LinearProgress from '@mui/material/LinearProgress'
 
 //progress bar for task completion
-function LinearProgressWithLabel(props) {
-  return (
-    <Box className='flex'>
-      <Box sx={{ width: '100%', mr: 1 }}>
-        <LinearProgress
-          variant='determinate'
-          {...props}
-          sx={{
-            backgroundColor: 'rgb(78 78 78 / 20%)',
-            '& .MuiLinearProgress-bar': {
-              backgroundColor: props.barColor,
-            },
-          }}
-        />
-      </Box>
-      <Box sx={{ minWidth: 35 }}>
-        <Typography variant='body2'>{`${Math.round(props.value)}%`}</Typography>
-      </Box>
-    </Box>
-  )
-}
-
 const Project = ({
   project,
   mode,
@@ -54,7 +32,7 @@ const Project = ({
       ? 0
       : (completedTasks.length / tasks.length) * 100
 
-  const currentColorScheme = colors.find((c) => c.color === project.color)
+  const currentColorScheme = ProjectColors(project)
 
   //menu to see more options
   const [moreAnchorEl, setMoreAnchorEl] = React.useState(null)
@@ -105,8 +83,7 @@ const Project = ({
           </Typography>
           <LinearProgressWithLabel
             value={progress}
-            barBackgroundColor={currentColorScheme.barBackgroundColor}
-            barColor={currentColorScheme.barColor}
+            barColor={currentColorScheme.color}
           />
         </CardContent>
       </Card>
@@ -123,7 +100,6 @@ const Project = ({
 
       <EditModal
         project={project}
-        colors={colors}
         openModal={openModal}
         handleCloseModel={handleCloseModel}
         handleUpdatingProject={handleUpdatingProject}

@@ -40,6 +40,7 @@ const App = () => {
       body: JSON.stringify({
         favorite: project.favorite,
         title: project.title,
+        color: project.color,
       }),
     })
   }
