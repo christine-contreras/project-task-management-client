@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { Link } from 'react-router-dom'
 import { ProjectColors } from '../ProjectColors'
 import List from '@mui/material/List'
 import ListItemIcon from '@mui/material/ListItemIcon'
@@ -33,14 +34,16 @@ export const ProjectList = ({ list }) => {
                     component='div'
                     disablePadding
                     key={`menuitem-${item.id}`}>
-                    <ListItemButton sx={{ pl: 4 }}>
-                      <ListItemIcon>
-                        <DashboardIcon
-                          style={{ color: currentColorScheme.colorDark }}
-                        />
-                      </ListItemIcon>
-                      <ListItemText primary={item.title} />
-                    </ListItemButton>
+                    <Link className='link' to={`/projects/${item.id}`}>
+                      <ListItemButton sx={{ pl: 4 }}>
+                        <ListItemIcon>
+                          <DashboardIcon
+                            style={{ color: currentColorScheme.colorDark }}
+                          />
+                        </ListItemIcon>
+                        <ListItemText primary={item.title} />
+                      </ListItemButton>
+                    </Link>
                   </List>
                 )
               })

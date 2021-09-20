@@ -61,7 +61,7 @@ const Project = ({
 
   return (
     <Grid item xs={12} sm={12} md={6} lg={4}>
-      <Link to={`/projects/${project.id}`}>
+      <Link to={`/projects/${project.id}`} className='link'>
         <Card
           className='b-radius project-card'
           style={{ background: project.color, color: '#444' }}>

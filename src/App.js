@@ -119,7 +119,13 @@ const App = () => {
               exact
               path='/projects/:id'
               render={(routerProps) => (
-                <ProjectDashboard {...routerProps} mode={mode} />
+                <ProjectDashboard
+                  {...routerProps}
+                  mode={mode}
+                  patchProjects={patchProjects}
+                  handleUpdatingProject={handleUpdatingProject}
+                  handleDeleteProject={handleDeleteProject}
+                />
               )}
             />
           </Layout>

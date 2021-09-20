@@ -30,3 +30,8 @@
 .letter-spacing{
     letter-spacing: -0.035em;
 }
+
+.link {
+    text-decoration: none;
+    color: inherit;
+}

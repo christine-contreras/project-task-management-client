@@ -13,11 +13,7 @@ const Navigation = ({ projects, favorites, mode }) => {
   return (
     <>
       <Toolbar className='flex'>
-        <Link
-          to='/projects'
-          exact
-          className='flex'
-          style={{ textDecoration: 'none' }}>
+        <Link to='/projects' exact className='flex link'>
           <Logo />
           <Typography
             className='letter-spacing'
