@@ -3,6 +3,7 @@ import '../../css/project.css'
 import { ProjectColors } from '../ProjectColors'
 import ProjectModal from '../modal/ProjectModal'
 import ProjectMenu from './ProjectMenu'
+import { Link } from 'react-router-dom'
 import LinearProgressWithLabel from './LinearProgressWithLabel'
 import {
   Card,
@@ -60,57 +61,59 @@ const Project = ({
 
   return (
     <Grid item xs={12} sm={12} md={6} lg={4}>
-      <Card
-        className='b-radius project-card'
-        style={{ background: project.color, color: '#444' }}>
-        <CardActionArea>
-          <Tooltip
-            title={project.favorite ? 'Remove Favorite' : 'Add Favorite'}>
-            <IconButton
-              onClick={handleFavoringAProject}
-              style={{ color: '#444' }}>
-              {project.favorite ? <StarIcon /> : <StarBorderIcon />}
-            </IconButton>
-          </Tooltip>
-          <Tooltip title='Project Options'>
-            <IconButton
-              style={{ color: '#444' }}
-              aria-label='show options'
-              aria-controls='project-options'
-              aria-haspopup='true'
-              onClick={handleMenuOpen}>
-              <MoreVertIcon />
-            </IconButton>
-          </Tooltip>
-        </CardActionArea>
-        <CardContent>
-          <Typography variant='h6' component='p'>
-            {project.title}
-          </Typography>
-          <LinearProgressWithLabel
-            value={progress}
-            barColor={currentColorScheme.color}
-          />
-        </CardContent>
-      </Card>
+      <Link to={`/projects/${project.id}`}>
+        <Card
+          className='b-radius project-card'
+          style={{ background: project.color, color: '#444' }}>
+          <CardActionArea>
+            <Tooltip
+              title={project.favorite ? 'Remove Favorite' : 'Add Favorite'}>
+              <IconButton
+                onClick={handleFavoringAProject}
+                style={{ color: '#444' }}>
+                {project.favorite ? <StarIcon /> : <StarBorderIcon />}
+              </IconButton>
+            </Tooltip>
+            <Tooltip title='Project Options'>
+              <IconButton
+                style={{ color: '#444' }}
+                aria-label='show options'
+                aria-controls='project-options'
+                aria-haspopup='true'
+                onClick={handleMenuOpen}>
+                <MoreVertIcon />
+              </IconButton>
+            </Tooltip>
+          </CardActionArea>
+          <CardContent>
+            <Typography variant='h6' component='p'>
+              {project.title}
+            </Typography>
+            <LinearProgressWithLabel
+              value={progress}
+              barColor={currentColorScheme.color}
+            />
+          </CardContent>
+        </Card>
 
-      {/* pop ups */}
-      <ProjectMenu
-        moreAnchorEl={moreAnchorEl}
-        isMenuOpen={isMenuOpen}
-        handleMenuClose={handleMenuClose}
-        handleOpenModel={handleOpenModel}
-        handleDeleteProject={handleDeleteProject}
-        project={project}
-      />
+        {/* pop ups */}
+        <ProjectMenu
+          moreAnchorEl={moreAnchorEl}
+          isMenuOpen={isMenuOpen}
+          handleMenuClose={handleMenuClose}
+          handleOpenModel={handleOpenModel}
+          handleDeleteProject={handleDeleteProject}
+          project={project}
+        />
 
-      <ProjectModal
-        project={project}
-        openModal={openModal}
-        handleCloseModel={handleCloseModel}
-        handleUpdatingProject={handleUpdatingProject}
-        mode={mode}
-      />
+        <ProjectModal
+          project={project}
+          openModal={openModal}
+          handleCloseModel={handleCloseModel}
+          handleUpdatingProject={handleUpdatingProject}
+          mode={mode}
+        />
+      </Link>
     </Grid>
   )
 }

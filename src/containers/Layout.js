@@ -33,7 +33,12 @@ const Layout = ({
         search={search}
         setSearch={setSearch}
       />
-      <SideNav open={open} toggleDrawer={toggleDrawer} projects={projects} />
+      <SideNav
+        open={open}
+        toggleDrawer={toggleDrawer}
+        projects={projects}
+        mode={mode}
+      />
 
       <Box
         component='main'

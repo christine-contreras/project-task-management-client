@@ -25,7 +25,6 @@ const TopNav = ({
   setSearch,
 }) => {
   const icon = !mode ? <Brightness7Icon /> : <Brightness2Icon />
-  //const icon = <Brightness7Icon />
 
   return (
     <MuiAppBar

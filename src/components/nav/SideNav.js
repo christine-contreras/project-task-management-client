@@ -3,25 +3,32 @@ import '../../css/sidenav.css'
 import ProjectList from './Projectlist'
 import FavoriteList from './FavoriteList'
 import { Logo } from './Logo'
+import { Link } from 'react-router-dom'
 import { Typography, Toolbar, Divider } from '@mui/material'
 import { Drawer } from '@mui/material'
 
 const drawerWidth = 240
 
-const Navigation = ({ projects, favorites }) => {
+const Navigation = ({ projects, favorites, mode }) => {
   return (
     <>
       <Toolbar className='flex'>
-        <Logo />
-        <Typography
-          className='letter-spacing'
-          component='h1'
-          variant='h6'
-          color='inherit'
-          noWrap
-          align='center'>
-          Mercury
-        </Typography>
+        <Link
+          to='/projects'
+          exact
+          className='flex'
+          style={{ textDecoration: 'none' }}>
+          <Logo />
+          <Typography
+            className='letter-spacing'
+            component='h1'
+            variant='h6'
+            noWrap
+            sx={{ color: mode ? '#444' : '#fff' }}
+            align='center'>
+            Mercury
+          </Typography>
+        </Link>
       </Toolbar>
       <FavoriteList list={favorites} />
 
@@ -32,7 +39,7 @@ const Navigation = ({ projects, favorites }) => {
   )
 }
 
-const SideNav = ({ open, toggleDrawer, window, projects }) => {
+const SideNav = ({ open, toggleDrawer, window, projects, mode }) => {
   const container =
     window !== undefined ? () => window().document.body : undefined
 
@@ -58,7 +65,7 @@ const SideNav = ({ open, toggleDrawer, window, projects }) => {
             width: drawerWidth,
           },
         }}>
-        <Navigation projects={projects} favorites={favorites} />
+        <Navigation projects={projects} favorites={favorites} mode={mode} />
       </Drawer>
 
       {/* desktop */}
@@ -77,7 +84,7 @@ const SideNav = ({ open, toggleDrawer, window, projects }) => {
           },
         }}
         open>
-        <Navigation projects={projects} favorites={favorites} />
+        <Navigation projects={projects} favorites={favorites} mode={mode} />
       </Drawer>
     </>
   )
