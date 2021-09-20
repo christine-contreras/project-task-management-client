@@ -9,7 +9,14 @@ import SideNav from '../components/nav/SideNav'
 
 const drawerWidth = 240
 
-const Layout = ({ children, toggleTheme, mode, projects }) => {
+const Layout = ({
+  children,
+  toggleTheme,
+  mode,
+  projects,
+  search,
+  setSearch,
+}) => {
   const [open, setOpen] = React.useState(false)
 
   const toggleDrawer = () => {
@@ -23,6 +30,8 @@ const Layout = ({ children, toggleTheme, mode, projects }) => {
         toggleDrawer={toggleDrawer}
         toggleTheme={toggleTheme}
         mode={mode}
+        search={search}
+        setSearch={setSearch}
       />
       <SideNav open={open} toggleDrawer={toggleDrawer} projects={projects} />
 

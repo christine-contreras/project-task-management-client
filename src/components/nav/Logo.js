@@ -34,15 +34,6 @@ export const Logo = () => {
           </g>
         </svg>
       </span>
-      <Typography
-        className='letter-spacing'
-        component='h1'
-        variant='h6'
-        color='inherit'
-        noWrap
-        align='center'>
-        Mercury
-      </Typography>
     </>
   )
 }

@@ -3,9 +3,8 @@ import '../../css/sidenav.css'
 import ProjectList from './Projectlist'
 import FavoriteList from './FavoriteList'
 import { Logo } from './Logo'
-import MuiDrawer from '@mui/material/Drawer'
-import Toolbar from '@mui/material/Toolbar'
-import Divider from '@mui/material/Divider'
+import { Typography, Toolbar, Divider } from '@mui/material'
+import { Drawer } from '@mui/material'
 
 const drawerWidth = 240
 
@@ -14,6 +13,15 @@ const Navigation = ({ projects, favorites }) => {
     <>
       <Toolbar className='flex'>
         <Logo />
+        <Typography
+          className='letter-spacing'
+          component='h1'
+          variant='h6'
+          color='inherit'
+          noWrap
+          align='center'>
+          Mercury
+        </Typography>
       </Toolbar>
       <FavoriteList list={favorites} />
 
@@ -35,7 +43,7 @@ const SideNav = ({ open, toggleDrawer, window, projects }) => {
   return (
     <>
       {/* mobile */}
-      <MuiDrawer
+      <Drawer
         container={container}
         variant='temporary'
         open={open}
@@ -51,10 +59,10 @@ const SideNav = ({ open, toggleDrawer, window, projects }) => {
           },
         }}>
         <Navigation projects={projects} favorites={favorites} />
-      </MuiDrawer>
+      </Drawer>
 
       {/* desktop */}
-      <MuiDrawer
+      <Drawer
         variant='permanent'
         sx={{
           display: { xs: 'none', sm: 'block' },
@@ -70,7 +78,7 @@ const SideNav = ({ open, toggleDrawer, window, projects }) => {
         }}
         open>
         <Navigation projects={projects} favorites={favorites} />
-      </MuiDrawer>
+      </Drawer>
     </>
   )
 }

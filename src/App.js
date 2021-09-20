@@ -79,19 +79,30 @@ const App = () => {
     setProjects(updatedProjects)
   }
 
+  //handle search
+  const [search, setSearch] = React.useState('')
+  const filterProjects = projects.filter((project) => {
+    return project.title.toLowerCase().includes(search.toLowerCase())
+  })
+
   return (
     <ThemeProvider theme={appliedTheme}>
       <Box sx={{ display: 'flex' }}>
         <CssBaseline />
         <Router>
-          <Layout toggleTheme={toggleTheme} mode={mode} projects={projects}>
+          <Layout
+            toggleTheme={toggleTheme}
+            mode={mode}
+            projects={projects}
+            search={search}
+            setSearch={setSearch}>
             <Route
               exact
               path='/projects'
               render={(routerProps) => (
                 <Projects
                   {...routerProps}
-                  projects={projects}
+                  projects={filterProjects}
                   mode={mode}
                   patchProjects={patchProjects}
                   postProjects={postProjects}

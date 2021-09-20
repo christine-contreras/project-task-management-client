@@ -25,6 +25,8 @@ const ProjectModal = ({
     } else {
       const newProject = { title: title, color: color }
       postProjects(newProject)
+      setTitle('')
+      setColor('')
     }
 
     handleCloseModel()
