@@ -6,20 +6,26 @@ import ColorPicker from './ColorPicker'
 import { SaveButton } from './SaveButton'
 import { Typography, Modal } from '@mui/material'
 
-const EditModal = ({
+const ProjectModal = ({
   openModal,
   handleCloseModel,
   mode,
   project,
+  postProjects,
   handleUpdatingProject,
 }) => {
-  const [title, setTitle] = React.useState(project.title)
-  const [color, setColor] = React.useState('')
+  const [title, setTitle] = React.useState(project ? project.title : '')
+  const [color, setColor] = React.useState(project ? project.color : '')
   const handleSubmit = (event) => {
     event.preventDefault()
 
-    const updatedProject = { ...project, title: title, color: color }
-    handleUpdatingProject(updatedProject)
+    if (project) {
+      const updatedProject = { ...project, title: title, color: color }
+      handleUpdatingProject(updatedProject)
+    } else {
+      const newProject = { title: title, color: color }
+      postProjects(newProject)
+    }
 
     handleCloseModel()
   }
@@ -54,11 +60,11 @@ const EditModal = ({
           />
           <ColorPicker colors={palette} color={color} setColor={setColor} />
 
-          <SaveButton title='Save Project' />
+          <SaveButton title={project ? 'Save Project' : 'Create Project'} />
         </form>
       </div>
     </Modal>
   )
 }
 
-export default EditModal
+export default ProjectModal

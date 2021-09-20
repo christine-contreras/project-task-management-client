@@ -45,6 +45,19 @@ const App = () => {
     })
   }
 
+  const postProjects = (project) => {
+    fetch('http://localhost:9393/projects/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        accept: 'application/json',
+      },
+      body: JSON.stringify(project),
+    }).then((res) => {
+      fetchProjects()
+    })
+  }
+
   const handleDeleteProject = (deleteProject) => {
     const updatedProjects = projects.filter(
       (project) => project.id !== deleteProject.id
@@ -81,6 +94,7 @@ const App = () => {
                   projects={projects}
                   mode={mode}
                   patchProjects={patchProjects}
+                  postProjects={postProjects}
                   handleUpdatingProject={handleUpdatingProject}
                   handleDeleteProject={handleDeleteProject}
                 />

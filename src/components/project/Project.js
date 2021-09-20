@@ -1,7 +1,7 @@
 import * as React from 'react'
 import '../../css/project.css'
 import { ProjectColors } from '../ProjectColors'
-import EditModal from '../modal/EditModal'
+import ProjectModal from '../modal/ProjectModal'
 import ProjectMenu from './ProjectMenu'
 import LinearProgressWithLabel from './LinearProgressWithLabel'
 import {
@@ -12,6 +12,7 @@ import {
   IconButton,
   Grid,
   Box,
+  Tooltip,
 } from '@mui/material'
 import MoreVertIcon from '@mui/icons-material/MoreVert'
 import StarBorderIcon from '@mui/icons-material/StarBorder'
@@ -63,19 +64,24 @@ const Project = ({
         className='b-radius project-card'
         style={{ background: project.color, color: '#444' }}>
         <CardActionArea>
-          <IconButton
-            onClick={handleFavoringAProject}
-            style={{ color: '#444' }}>
-            {project.favorite ? <StarIcon /> : <StarBorderIcon />}
-          </IconButton>
-          <IconButton
-            style={{ color: '#444' }}
-            aria-label='show options'
-            aria-controls='project-options'
-            aria-haspopup='true'
-            onClick={handleMenuOpen}>
-            <MoreVertIcon />
-          </IconButton>
+          <Tooltip
+            title={project.favorite ? 'Remove Favorite' : 'Add Favorite'}>
+            <IconButton
+              onClick={handleFavoringAProject}
+              style={{ color: '#444' }}>
+              {project.favorite ? <StarIcon /> : <StarBorderIcon />}
+            </IconButton>
+          </Tooltip>
+          <Tooltip title='Project Options'>
+            <IconButton
+              style={{ color: '#444' }}
+              aria-label='show options'
+              aria-controls='project-options'
+              aria-haspopup='true'
+              onClick={handleMenuOpen}>
+              <MoreVertIcon />
+            </IconButton>
+          </Tooltip>
         </CardActionArea>
         <CardContent>
           <Typography variant='h6' component='p'>
@@ -98,7 +104,7 @@ const Project = ({
         project={project}
       />
 
-      <EditModal
+      <ProjectModal
         project={project}
         openModal={openModal}
         handleCloseModel={handleCloseModel}
