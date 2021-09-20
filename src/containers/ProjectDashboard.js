@@ -1,5 +1,7 @@
 import * as React from 'react'
 import { ProjectColors } from '../components/ProjectColors'
+import ProjectMenu from '../components/project/ProjectMenu'
+import ProjectModal from '../components/modal/ProjectModal'
 import { Typography, Grid, Tooltip, IconButton, Box } from '@mui/material'
 import MoreVertIcon from '@mui/icons-material/MoreVert'
 import StarBorderIcon from '@mui/icons-material/StarBorder'
@@ -7,10 +9,13 @@ import StarIcon from '@mui/icons-material/Star'
 
 const ProjectDashboard = ({
   match,
+  history,
+  mode,
   patchProject,
   handleUpdatingProject,
   handleDeleteProject,
 }) => {
+  //handle projects
   const [project, setProject] = React.useState([])
   const { boards } = project
 
@@ -23,11 +28,36 @@ const ProjectDashboard = ({
   const handleFavoringAProject = () => {
     const updatefavProject = { ...project, favorite: !project.favorite }
     setProject(updatefavProject)
-
     handleUpdatingProject(updatefavProject)
   }
 
+  const handleChange = (changedProject) => {
+    setProject(changedProject)
+    handleUpdatingProject(changedProject)
+  }
+
+  const handleDelete = (deleteProject) => {
+    handleDeleteProject(deleteProject)
+    history.push('/projects/')
+  }
+
+  //get colors for project
   const currentColorScheme = ProjectColors(project)
+
+  //menu to see more options
+  const [moreAnchorEl, setMoreAnchorEl] = React.useState(null)
+  const isMenuOpen = Boolean(moreAnchorEl)
+  const handleMenuOpen = (event) => {
+    setMoreAnchorEl(event.currentTarget)
+  }
+  const handleMenuClose = () => {
+    setMoreAnchorEl(null)
+  }
+
+  //handle edit modal
+  const [openModal, setOpenModal] = React.useState(false)
+  const handleOpenModel = () => setOpenModal(true)
+  const handleCloseModel = () => setOpenModal(false)
 
   return (
     <>
@@ -39,7 +69,11 @@ const ProjectDashboard = ({
               <IconButton
                 onClick={handleFavoringAProject}
                 size='large'
-                sx={{ color: currentColorScheme.colorDark }}>
+                sx={{
+                  color: currentColorScheme
+                    ? currentColorScheme.colorDark
+                    : 'inherit',
+                }}>
                 {project.favorite ? (
                   <StarIcon fontSize='large' />
                 ) : (
@@ -58,11 +92,28 @@ const ProjectDashboard = ({
                 aria-label='show options'
                 aria-controls='project-options'
                 aria-haspopup='true'
-                onClick={console.log}>
+                onClick={handleMenuOpen}>
                 <MoreVertIcon />
               </IconButton>
             </Tooltip>
           </Box>
+
+          <ProjectMenu
+            moreAnchorEl={moreAnchorEl}
+            isMenuOpen={isMenuOpen}
+            handleMenuClose={handleMenuClose}
+            handleOpenModel={handleOpenModel}
+            handleDeleteProject={handleDelete}
+            project={project}
+          />
+
+          <ProjectModal
+            project={project}
+            openModal={openModal}
+            handleCloseModel={handleCloseModel}
+            handleUpdatingProject={handleChange}
+            mode={mode}
+          />
         </Grid>
       )}
     </>
