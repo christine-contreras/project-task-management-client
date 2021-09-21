@@ -1,9 +1,11 @@
 import * as React from 'react'
 import '../css/boards.css'
 import Board from '../components/board/Board'
+import CreateBoard from '../components/board/CreateBoard'
+import BoardModal from '../components/modal/BoardModal'
 import { Grid } from '@mui/material'
 
-const Boards = ({ boards, mode, setBoards }) => {
+const Boards = ({ boards, projectId, mode, setBoards, fetchProject }) => {
   //handle boards
   const handleDeleteBoard = (deleteBoard) => {
     const updatedBoards = boards.filter((board) => board.id !== deleteBoard.id)
@@ -41,16 +43,19 @@ const Boards = ({ boards, mode, setBoards }) => {
         'Content-Type': 'application/json',
         accept: 'application/json',
       },
-      body: JSON.stringify(project),
+      body: JSON.stringify({
+        name: newBoard.name,
+        project_id: projectId,
+      }),
     }).then(() => {
-      setBoards(
-        prevBoards({
-          ...prevBoards,
-          newBoard,
-        })
-      )
+      fetchProject()
     })
   }
+
+  //handle create board modal
+  const [openModal, setOpenModal] = React.useState(false)
+  const handleOpenModel = () => setOpenModal(true)
+  const handleCloseModel = () => setOpenModal(false)
 
   return (
     <Grid container item className='boards-container'>
@@ -62,8 +67,18 @@ const Boards = ({ boards, mode, setBoards }) => {
             mode={mode}
             handleUpdateBoard={handleUpdateBoard}
             handleDeleteBoard={handleDeleteBoard}
+            handleCreateBoard={handleCreateBoard}
           />
         ))}
+
+      <CreateBoard handleOpenModel={handleOpenModel} />
+
+      <BoardModal
+        openModal={openModal}
+        handleCloseModel={handleCloseModel}
+        mode={mode}
+        handleCreateBoard={handleCreateBoard}
+      />
     </Grid>
   )
 }

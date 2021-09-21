@@ -26,7 +26,7 @@ const Projects = ({
           <Tooltip title='Create New Project'>
             <IconButton
               size='large'
-              aria-label='edit project'
+              aria-label='create project'
               color='inherit'
               onClick={handleOpenModel}>
               <ControlPointIcon fontSize='large' />

@@ -8,6 +8,7 @@ const BoardModal = ({
   openModal,
   handleCloseModel,
   handleUpdateBoard,
+  handleCreateBoard,
   mode,
 }) => {
   const [name, setName] = React.useState(board ? board.name : '')
@@ -20,9 +21,8 @@ const BoardModal = ({
       handleUpdateBoard(updatedBoard)
     } else {
       const newBoard = { name: name }
-      // postProjects(newProject)
-      setTitle('')
-      setColor('')
+      handleCreateBoard(newBoard)
+      setName('')
     }
 
     handleCloseModel()
@@ -43,7 +43,7 @@ const BoardModal = ({
           variant='h5'
           component='h3'
           gutterBottom>
-          Project Details
+          Board Details
         </Typography>
 
         <form

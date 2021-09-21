@@ -11,7 +11,13 @@ import {
 } from '@mui/material'
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz'
 
-const Board = ({ board, handleDeleteBoard, handleUpdateBoard, mode }) => {
+const Board = ({
+  board,
+  handleDeleteBoard,
+  handleUpdateBoard,
+  handleCreateBoard,
+  mode,
+}) => {
   const { name, tasks } = board
 
   //board menu to see more options

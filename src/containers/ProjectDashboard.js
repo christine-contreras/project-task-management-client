@@ -130,7 +130,13 @@ const ProjectDashboard = ({
               />
             </Grid>
 
-            <Boards boards={boards} setBoards={setBoards} mode={mode} />
+            <Boards
+              boards={boards}
+              setBoards={setBoards}
+              fetchProject={fetchProject}
+              mode={mode}
+              projectId={project.id}
+            />
           </Grid>
         </>
       )}
