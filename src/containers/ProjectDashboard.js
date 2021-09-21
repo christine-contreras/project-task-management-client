@@ -3,7 +3,14 @@ import { ProjectColors } from '../components/ProjectColors'
 import ProjectMenu from '../components/project/ProjectMenu'
 import ProjectModal from '../components/modal/ProjectModal'
 import Boards from './Boards'
-import { Typography, Grid, Tooltip, IconButton, Box } from '@mui/material'
+import {
+  Typography,
+  Grid,
+  Tooltip,
+  IconButton,
+  Box,
+  Container,
+} from '@mui/material'
 import MoreVertIcon from '@mui/icons-material/MoreVert'
 import StarBorderIcon from '@mui/icons-material/StarBorder'
 import StarIcon from '@mui/icons-material/Star'
@@ -70,7 +77,7 @@ const ProjectDashboard = ({
     <>
       {project && (
         <>
-          <Grid container>
+          <Container maxWidth='xl' sx={{ height: '80vh' }}>
             <Grid
               item
               container
@@ -135,9 +142,10 @@ const ProjectDashboard = ({
               setBoards={setBoards}
               fetchProject={fetchProject}
               mode={mode}
+              colors={currentColorScheme}
               projectId={project.id}
             />
-          </Grid>
+          </Container>
         </>
       )}
     </>

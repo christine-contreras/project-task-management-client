@@ -17,6 +17,9 @@ export const darkTheme = createTheme({
     //   // dark: '#b90076',
     //   contrastText: '#fff',
     // },
+    // background: {
+    //   paper: '#212121',
+    // },
   },
   typography: {
     fontFamily: '"DM Sans", sans-serif',

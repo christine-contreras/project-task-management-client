@@ -7,15 +7,16 @@ import {
   Box,
   Tooltip,
   IconButton,
-  Container,
+  Button,
 } from '@mui/material'
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz'
+import AddIcon from '@mui/icons-material/Add'
 
 const Board = ({
   board,
   handleDeleteBoard,
   handleUpdateBoard,
-  handleCreateBoard,
+  colors,
   mode,
 }) => {
   const { name, tasks } = board
@@ -38,7 +39,14 @@ const Board = ({
   const handleCloseModel = () => setOpenModal(false)
 
   return (
-    <Grid item xs={12} sm={12} md={6} lg={4} className='board'>
+    <Grid
+      item
+      className='board'
+      flexDirection='column'
+      sx={{
+        backgroundColor: (theme) =>
+          mode ? colors.colorLight : theme.palette.grey[800],
+      }}>
       <Grid container alignContent='center' justifyContent='space-between'>
         <Typography variant='h6' component='h3' gutterBottom>
           {name}
@@ -56,6 +64,15 @@ const Board = ({
         </Box>
       </Grid>
 
+      {/* add task button */}
+      <Button
+        className='btn-add'
+        color='inherit'
+        onClick={console.log}
+        startIcon={<AddIcon />}
+        variant='outlined'>
+        Add Task
+      </Button>
       {/* popups */}
       <BoardMenu
         moreAnchorEl={moreAnchorEl}

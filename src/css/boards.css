@@ -2,8 +2,21 @@
     display: flex;
     flex-flow: row nowrap;
     overflow-x: scroll;
+    width: 2000px;
 }
 
 .boards-container div:not(:last-child){
-    padding-right: 4em;
+    margin-right: 2em;
 }
+
+.board{
+    min-width: 350px;
+    min-height: 200px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.btn-add{
+    width: 100%;
+}
+

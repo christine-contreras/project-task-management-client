@@ -4,7 +4,7 @@ import ControlPointIcon from '@mui/icons-material/ControlPoint'
 
 const CreateBoard = ({ handleOpenModel }) => {
   return (
-    <Grid item xs={12} sm={12} md={6} lg={4}>
+    <Grid item sx={{ minWidth: 150 }}>
       <Box className='flex'>
         <Tooltip title='Create New Board'>
           <IconButton
@@ -14,6 +14,7 @@ const CreateBoard = ({ handleOpenModel }) => {
             <ControlPointIcon />
           </IconButton>
         </Tooltip>
+        Create Board
       </Box>
     </Grid>
   )

@@ -3,9 +3,16 @@ import '../css/boards.css'
 import Board from '../components/board/Board'
 import CreateBoard from '../components/board/CreateBoard'
 import BoardModal from '../components/modal/BoardModal'
-import { Grid } from '@mui/material'
+import { Container, Grid } from '@mui/material'
 
-const Boards = ({ boards, projectId, mode, setBoards, fetchProject }) => {
+const Boards = ({
+  boards,
+  projectId,
+  mode,
+  setBoards,
+  fetchProject,
+  colors,
+}) => {
   //handle boards
   const handleDeleteBoard = (deleteBoard) => {
     const updatedBoards = boards.filter((board) => board.id !== deleteBoard.id)
@@ -58,28 +65,31 @@ const Boards = ({ boards, projectId, mode, setBoards, fetchProject }) => {
   const handleCloseModel = () => setOpenModal(false)
 
   return (
-    <Grid container item className='boards-container'>
-      {boards &&
-        boards.map((board) => (
-          <Board
-            key={`board-${board.id}`}
-            board={board}
-            mode={mode}
-            handleUpdateBoard={handleUpdateBoard}
-            handleDeleteBoard={handleDeleteBoard}
-            handleCreateBoard={handleCreateBoard}
-          />
-        ))}
+    <Container sx={{ overflow: 'scroll' }} maxWidth='xl'>
+      <Grid container item className='boards-container'>
+        {boards &&
+          boards.map((board) => (
+            <Board
+              key={`board-${board.id}`}
+              board={board}
+              mode={mode}
+              colors={colors}
+              handleUpdateBoard={handleUpdateBoard}
+              handleDeleteBoard={handleDeleteBoard}
+              handleCreateBoard={handleCreateBoard}
+            />
+          ))}
 
-      <CreateBoard handleOpenModel={handleOpenModel} />
+        <CreateBoard handleOpenModel={handleOpenModel} />
 
-      <BoardModal
-        openModal={openModal}
-        handleCloseModel={handleCloseModel}
-        mode={mode}
-        handleCreateBoard={handleCreateBoard}
-      />
-    </Grid>
+        <BoardModal
+          openModal={openModal}
+          handleCloseModel={handleCloseModel}
+          mode={mode}
+          handleCreateBoard={handleCreateBoard}
+        />
+      </Grid>
+    </Container>
   )
 }
 
