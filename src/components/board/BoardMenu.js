@@ -29,7 +29,7 @@ const BoardMenu = ({
         <IconButton size='large' aria-label='edit project' color='inherit'>
           <CreateIcon />
         </IconButton>
-        <p>Edit Board Details</p>
+        <p>Rename Board</p>
       </MenuItem>
       <MenuItem onClick={() => handleDeleteBoard(board)}>
         <IconButton size='large' aria-label='delete project' color='inherit'>

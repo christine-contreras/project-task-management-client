@@ -17,7 +17,7 @@ const ProjectDashboard = ({
 }) => {
   //handle projects
   const [project, setProject] = React.useState([])
-  const { boards } = project
+  const [boards, setBoards] = React.useState([])
 
   React.useEffect(() => {
     fetchProject()
@@ -26,7 +26,10 @@ const ProjectDashboard = ({
   const fetchProject = () => {
     fetch(`http://localhost:9393/projects/${match.params.id}`)
       .then((res) => res.json())
-      .then((data) => setProject(data.project))
+      .then((data) => {
+        setProject(data.project)
+        setBoards(data.project.boards)
+      })
   }
 
   const handleFavoringAProject = () => {
@@ -62,6 +65,17 @@ const ProjectDashboard = ({
   const [openModal, setOpenModal] = React.useState(false)
   const handleOpenModel = () => setOpenModal(true)
   const handleCloseModel = () => setOpenModal(false)
+
+  //handle boards
+  const handleDeleteBoard = (deleteBoard) => {
+    const updatedBoards = boards.filter((board) => board.id !== deleteBoard.id)
+
+    fetch(`http://localhost:9393/boards/${deleteBoard.id}`, {
+      method: 'DELETE',
+    })
+
+    setBoards(updatedBoards)
+  }
 
   return (
     <>
@@ -127,7 +141,7 @@ const ProjectDashboard = ({
               />
             </Grid>
 
-            <Boards boards={boards} fetchProject={fetchProject} />
+            <Boards boards={boards} handleDeleteBoard={handleDeleteBoard} />
           </Grid>
         </>
       )}

@@ -10,7 +10,7 @@ import {
 } from '@mui/material'
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz'
 
-const Board = ({ board, fetchProject }) => {
+const Board = ({ board, handleDeleteBoard }) => {
   const { name, tasks } = board
 
   //board menu to see more options
@@ -23,14 +23,6 @@ const Board = ({ board, fetchProject }) => {
 
   const handleMenuClose = () => {
     setMoreAnchorEl(null)
-  }
-
-  const handleDeleteBoard = (board) => {
-    fetch(`http://localhost:9393/boards/${board.id}`, {
-      method: 'DELETE',
-    }).then(() => {
-      fetchProject()
-    })
   }
 
   return (
