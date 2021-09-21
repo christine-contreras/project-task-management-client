@@ -66,17 +66,6 @@ const ProjectDashboard = ({
   const handleOpenModel = () => setOpenModal(true)
   const handleCloseModel = () => setOpenModal(false)
 
-  //handle boards
-  const handleDeleteBoard = (deleteBoard) => {
-    const updatedBoards = boards.filter((board) => board.id !== deleteBoard.id)
-
-    fetch(`http://localhost:9393/boards/${deleteBoard.id}`, {
-      method: 'DELETE',
-    })
-
-    setBoards(updatedBoards)
-  }
-
   return (
     <>
       {project && (
@@ -141,7 +130,7 @@ const ProjectDashboard = ({
               />
             </Grid>
 
-            <Boards boards={boards} handleDeleteBoard={handleDeleteBoard} />
+            <Boards boards={boards} setBoards={setBoards} mode={mode} />
           </Grid>
         </>
       )}

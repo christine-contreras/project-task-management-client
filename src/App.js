@@ -122,7 +122,6 @@ const App = () => {
                 <ProjectDashboard
                   {...routerProps}
                   mode={mode}
-                  // patchProjects={patchProjects}
                   handleUpdatingProject={handleUpdatingProject}
                   handleDeleteProject={handleDeleteProject}
                 />

@@ -9,6 +9,7 @@ const BoardMenu = ({
   handleMenuClose,
   board,
   handleDeleteBoard,
+  handleOpenModel,
 }) => {
   return (
     <Menu
@@ -25,7 +26,7 @@ const BoardMenu = ({
       }}
       open={isMenuOpen}
       onClose={handleMenuClose}>
-      <MenuItem onClick={console.log}>
+      <MenuItem onClick={handleOpenModel}>
         <IconButton size='large' aria-label='edit project' color='inherit'>
           <CreateIcon />
         </IconButton>
