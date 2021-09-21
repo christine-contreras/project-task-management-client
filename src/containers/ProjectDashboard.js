@@ -20,10 +20,14 @@ const ProjectDashboard = ({
   const { boards } = project
 
   React.useEffect(() => {
+    fetchProject()
+  }, [match.params.id])
+
+  const fetchProject = () => {
     fetch(`http://localhost:9393/projects/${match.params.id}`)
       .then((res) => res.json())
       .then((data) => setProject(data.project))
-  }, [match.params.id])
+  }
 
   const handleFavoringAProject = () => {
     const updatefavProject = { ...project, favorite: !project.favorite }
@@ -123,7 +127,7 @@ const ProjectDashboard = ({
               />
             </Grid>
 
-            <Boards boards={boards} />
+            <Boards boards={boards} fetchProject={fetchProject} />
           </Grid>
         </>
       )}

@@ -1,14 +1,18 @@
-import React from 'react'
+import * as React from 'react'
 import '../css/boards.css'
 import Board from '../components/board/Board'
-import { Grid, Container } from '@mui/material'
+import { Grid } from '@mui/material'
 
-const Boards = ({ boards }) => {
+const Boards = ({ boards, fetchProject }) => {
   return (
     <Grid container item className='boards-container'>
       {boards &&
         boards.map((board) => (
-          <Board key={`board-${board.id}`} board={board} />
+          <Board
+            key={`board-${board.id}`}
+            board={board}
+            fetchProject={fetchProject}
+          />
         ))}
     </Grid>
   )

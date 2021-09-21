@@ -1,4 +1,5 @@
 import React from 'react'
+import BoardMenu from './BoardMenu'
 import {
   Grid,
   Typography,
@@ -9,8 +10,29 @@ import {
 } from '@mui/material'
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz'
 
-const Board = ({ board }) => {
+const Board = ({ board, fetchProject }) => {
   const { name, tasks } = board
+
+  //board menu to see more options
+  const [moreAnchorEl, setMoreAnchorEl] = React.useState(null)
+  const isMenuOpen = Boolean(moreAnchorEl)
+
+  const handleMenuOpen = (event) => {
+    setMoreAnchorEl(event.currentTarget)
+  }
+
+  const handleMenuClose = () => {
+    setMoreAnchorEl(null)
+  }
+
+  const handleDeleteBoard = (board) => {
+    fetch(`http://localhost:9393/boards/${board.id}`, {
+      method: 'DELETE',
+    }).then(() => {
+      fetchProject()
+    })
+  }
+
   return (
     <Grid item xs={12} sm={12} md={6} lg={4} className='board'>
       <Grid container alignContent='center' justifyContent='space-between'>
@@ -23,12 +45,21 @@ const Board = ({ board }) => {
               aria-label='show options'
               aria-controls='board-options'
               aria-haspopup='true'
-              onClick={console.log}>
+              onClick={handleMenuOpen}>
               <MoreHorizIcon />
             </IconButton>
           </Tooltip>
         </Box>
       </Grid>
+
+      <BoardMenu
+        moreAnchorEl={moreAnchorEl}
+        isMenuOpen={isMenuOpen}
+        handleMenuClose={handleMenuClose}
+        // handleOpenModel={handleOpenModel}
+        handleDeleteBoard={handleDeleteBoard}
+        board={board}
+      />
     </Grid>
   )
 }

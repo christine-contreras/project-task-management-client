@@ -1,16 +1,14 @@
 import React from 'react'
-
 import { Menu, MenuItem, IconButton } from '@mui/material'
 import CreateIcon from '@mui/icons-material/Create'
 import DeleteIcon from '@mui/icons-material/Delete'
 
-const ProjectMenu = ({
+const BoardMenu = ({
   moreAnchorEl,
   isMenuOpen,
   handleMenuClose,
-  handleOpenModel,
-  handleDeleteProject,
-  project,
+  board,
+  handleDeleteBoard,
 }) => {
   return (
     <Menu
@@ -27,20 +25,20 @@ const ProjectMenu = ({
       }}
       open={isMenuOpen}
       onClose={handleMenuClose}>
-      <MenuItem onClick={handleOpenModel}>
+      <MenuItem onClick={console.log}>
         <IconButton size='large' aria-label='edit project' color='inherit'>
           <CreateIcon />
         </IconButton>
-        <p>Edit Project Details</p>
+        <p>Edit Board Details</p>
       </MenuItem>
-      <MenuItem onClick={() => handleDeleteProject(project)}>
+      <MenuItem onClick={() => handleDeleteBoard(board)}>
         <IconButton size='large' aria-label='delete project' color='inherit'>
           <DeleteIcon />
         </IconButton>
-        <p>Delete Project</p>
+        <p>Delete Board</p>
       </MenuItem>
     </Menu>
   )
 }
 
-export default ProjectMenu
+export default BoardMenu
