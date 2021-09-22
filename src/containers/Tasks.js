@@ -1,14 +1,51 @@
-import React from 'react'
+import * as React from 'react'
 import '../css/task.css'
 import Task from '../components/task/Task'
 import { Grid, Typography, Container } from '@mui/material'
 
-const Tasks = ({ tasks, boardId, mode }) => {
+const Tasks = ({ tasks, boardId, setTasks, mode }) => {
+  const completeTask = (task) => {
+    const updatedTask = { ...task, completed: !task.completed }
+
+    updateTask(updatedTask)
+  }
+
+  const updateTask = (updatedTask) => {
+    const updatedTasks = tasks.map((task) =>
+      task.id === updatedTask.id ? updatedTask : task
+    )
+
+    fetch(`http://localhost:9393/tasks/${updatedTask.id}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        accept: 'application/json',
+      },
+      body: JSON.stringify({
+        board_id: boardId,
+        completed: updatedTask.completed,
+        description: updatedTask.description,
+        due_date: updatedTask.due_date,
+        name: updatedTask.name,
+        priority: updatedTask.priority,
+        status: updatedTask.status,
+      }),
+    })
+
+    setTasks(updatedTasks)
+  }
+
   return (
     <Grid container>
       {tasks.length !== 0 ? (
         tasks.map((task) => (
-          <Task task={task} key={`task-${task.id}`} mode={mode} />
+          <Task
+            task={task}
+            key={`task-${task.id}`}
+            mode={mode}
+            completeTask={completeTask}
+            updateTask={updateTask}
+          />
         ))
       ) : (
         <Grid container item alignItems='center' justifyContent='center'>

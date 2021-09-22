@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 import BoardMenu from './BoardMenu'
 import BoardModal from '../modal/BoardModal'
 import Tasks from '../../containers/Tasks'
@@ -20,7 +20,12 @@ const Board = ({
   colors,
   mode,
 }) => {
-  const { name, tasks, id } = board
+  const { name, id } = board
+  const [tasks, setTasks] = React.useState([])
+
+  React.useEffect(() => {
+    setTasks(board.tasks)
+  }, [board])
 
   //board menu to see more options
   const [moreAnchorEl, setMoreAnchorEl] = React.useState(null)
@@ -65,7 +70,7 @@ const Board = ({
         </Box>
       </Grid>
 
-      <Tasks tasks={tasks} boardId={id} mode={mode} />
+      <Tasks tasks={tasks} boardId={id} mode={mode} setTasks={setTasks} />
 
       {/* add task button */}
       <Button

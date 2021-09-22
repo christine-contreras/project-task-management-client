@@ -18,7 +18,7 @@ import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline'
 import CheckCircleIcon from '@mui/icons-material/CheckCircle'
 import ScheduleIcon from '@mui/icons-material/Schedule'
 
-const Task = ({ task, mode }) => {
+const Task = ({ task, mode, completeTask, updateTask }) => {
   const { name, due_date, priority, status } = task
 
   return (
@@ -33,8 +33,12 @@ const Task = ({ task, mode }) => {
         }}>
         <CardActionArea className='card-actions'>
           <Tooltip title='complete task'>
-            <IconButton>
-              <CheckCircleOutlineIcon />
+            <IconButton onClick={() => completeTask(task)}>
+              {task.completed ? (
+                <CheckCircleIcon color='success' />
+              ) : (
+                <CheckCircleOutlineIcon color='inherit' />
+              )}
             </IconButton>
           </Tooltip>
 
@@ -59,23 +63,10 @@ const Task = ({ task, mode }) => {
             </Grid>
 
             <Grid item container className='task-callouts flex'>
-              {/* <Button
-                variant='contained'
-                className='btn-callout'
-                sx={{
-                  backgroundColor: mode ? amber[400] : amber[200],
-                  '&:hover': {
-                    backgroundColor: 'black',
-                  },
-                }}>
-                {priority}
-              </Button> */}
-              <Button
-                variant='contained'
-                className={priorityColor(priority, mode)}>
+              <Button variant='contained' className={priorityColor(priority)}>
                 {priority}
               </Button>
-              <Button variant='contained' className={statusColor(status, mode)}>
+              <Button variant='contained' className={statusColor(status)}>
                 {status}
               </Button>
             </Grid>
