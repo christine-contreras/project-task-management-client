@@ -1,6 +1,6 @@
 import * as React from 'react'
 import '../../css/project.css'
-import { ProjectColors } from '../ProjectColors'
+import { ProjectColors } from '../../helpers/ProjectColors'
 import ProjectModal from '../modal/ProjectModal'
 import ProjectMenu from './ProjectMenu'
 import { Link } from 'react-router-dom'
@@ -64,7 +64,7 @@ const Project = ({
       <Card
         className='b-radius project-card'
         style={{ background: project.color, color: '#444' }}>
-        <CardActionArea>
+        <CardActionArea className='card-actions'>
           <Tooltip
             title={project.favorite ? 'Remove Favorite' : 'Add Favorite'}>
             <IconButton

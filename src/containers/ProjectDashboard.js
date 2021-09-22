@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { ProjectColors } from '../components/ProjectColors'
+import { ProjectColors } from '../helpers/ProjectColors'
 import ProjectMenu from '../components/project/ProjectMenu'
 import ProjectModal from '../components/modal/ProjectModal'
 import Boards from './Boards'

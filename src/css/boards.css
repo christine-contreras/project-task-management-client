@@ -5,16 +5,15 @@
     width: 2000px;
 }
 
-.boards-container div:not(:last-child){
-    margin-right: 2em;
-}
 
-.board{
+.board.MuiGrid-root{
     min-width: 350px;
     min-height: 200px;
     padding: 10px;
-    border-radius: 10px;
+    margin-right: 2em;
 }
+
+
 
 .btn-add{
     width: 100%;

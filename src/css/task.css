@@ -1,0 +1,83 @@
+.task-card{
+    margin-bottom: 1em;
+}
+
+.task-callouts{
+    padding-top: 1em;
+}
+
+.btn-callout.MuiButtonBase-root{
+    padding: 2px 10px;
+    text-transform: capitalize;
+    margin: 0 5px;
+    border-radius: 32px;
+    color: #fff;
+}
+
+/* 400 and 200 */
+
+.btn-callout.default, .btn-callout.default:hover{
+    background-color: #607d8b;
+}
+
+.btn-callout.default.light, .btn-callout.default.light:hover{
+    background-color: #b1bec5;
+}
+
+.btn-callout.low, .btn-callout.low:hover{
+    background-color: #ffca28;
+}
+
+.btn-callout.low.light, .btn-callout.low.light:hover{
+    background-color: #fee082;
+}
+
+.btn-callout.medium, .btn-callout.medium:hover{
+    background-color: #ff7043;
+}
+
+.btn-callout.medium.light, .btn-callout.medium.light:hover{
+    background-color: #ffab91;
+}
+
+.btn-callout.high, .btn-callout.high:hover{
+    background-color: #ef5350;
+}
+
+.btn-callout.high.light, .btn-callout.high.light:hover{
+    background-color: #ef9a9a;
+}
+
+
+.btn-callout.complete, .btn-callout.complete:hover{
+    background-color: #66bb69;
+}
+
+.btn-callout.complete.light, .btn-callout.complete.light:hover{
+    background-color: #a5d6a7;
+}
+
+.btn-callout.progress, .btn-callout.progress:hover{
+    background-color: #29b6f6;
+}
+
+.btn-callout.progress.light, .btn-callout.progress.light:hover{
+    background-color: #82d4fa;
+}
+
+
+.btn-callout.pending, .btn-callout.pending:hover{
+    background-color: #ab47bc;
+}
+
+.btn-callout.pending.light, .btn-callout.pending.light:hover{
+    background-color: #ce93d8;
+}
+
+.btn-callout.changes, .btn-callout.changes:hover{
+    background-color: #ec407a;
+}
+
+.btn-callout.changes.light, .btn-callout.changes.light:hover{
+    background-color: #f48fb1;
+}

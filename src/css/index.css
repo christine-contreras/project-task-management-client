@@ -12,6 +12,9 @@
     border-radius: 32px;
 }
 
+.b-radius-sm, .b-radius-sm.MuiPaper-root{
+    border-radius: 10px;
+}
 
 .flex{
     display: flex;
@@ -34,4 +37,10 @@
 .link {
     text-decoration: none;
     color: inherit;
+}
+
+.card-actions.MuiCardActionArea-root{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }

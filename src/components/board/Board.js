@@ -1,6 +1,7 @@
 import React from 'react'
 import BoardMenu from './BoardMenu'
 import BoardModal from '../modal/BoardModal'
+import Tasks from '../../containers/Tasks'
 import {
   Grid,
   Typography,
@@ -19,7 +20,7 @@ const Board = ({
   colors,
   mode,
 }) => {
-  const { name, tasks } = board
+  const { name, tasks, id } = board
 
   //board menu to see more options
   const [moreAnchorEl, setMoreAnchorEl] = React.useState(null)
@@ -41,7 +42,7 @@ const Board = ({
   return (
     <Grid
       item
-      className='board'
+      className='board b-radius-sm'
       flexDirection='column'
       sx={{
         backgroundColor: (theme) =>
@@ -63,6 +64,8 @@ const Board = ({
           </Tooltip>
         </Box>
       </Grid>
+
+      <Tasks tasks={tasks} boardId={id} mode={mode} />
 
       {/* add task button */}
       <Button
