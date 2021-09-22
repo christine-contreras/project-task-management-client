@@ -1,6 +1,8 @@
 import React from 'react'
 import { changeDate } from '../../helpers/changeDate'
 import { priorityColor, statusColor } from '../../helpers/taskTags'
+import TaskMenu from './TaskMenu'
+import TaskModal from '../modal/TaskModal'
 import {
   Card,
   Container,
@@ -18,8 +20,25 @@ import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline'
 import CheckCircleIcon from '@mui/icons-material/CheckCircle'
 import ScheduleIcon from '@mui/icons-material/Schedule'
 
-const Task = ({ task, mode, completeTask, updateTask }) => {
+const Task = ({ task, mode, completeTask, updateTask, handleDeleteTask }) => {
   const { name, due_date, priority, status } = task
+
+  //task menu to see more options
+  const [moreAnchorEl, setMoreAnchorEl] = React.useState(null)
+  const isMenuOpen = Boolean(moreAnchorEl)
+
+  const handleMenuOpen = (event) => {
+    setMoreAnchorEl(event.currentTarget)
+  }
+
+  const handleMenuClose = () => {
+    setMoreAnchorEl(null)
+  }
+
+  //handle edit modal
+  const [openModal, setOpenModal] = React.useState(false)
+  const handleOpenModel = () => setOpenModal(true)
+  const handleCloseModel = () => setOpenModal(false)
 
   return (
     <Grid item xs={12}>
@@ -43,7 +62,7 @@ const Task = ({ task, mode, completeTask, updateTask }) => {
           </Tooltip>
 
           <Tooltip title='Task Options'>
-            <IconButton>
+            <IconButton onClick={handleMenuOpen}>
               <MoreVertIcon />
             </IconButton>
           </Tooltip>
@@ -73,6 +92,24 @@ const Task = ({ task, mode, completeTask, updateTask }) => {
           </Grid>
         </CardContent>
       </Card>
+
+      {/* popups */}
+      <TaskMenu
+        moreAnchorEl={moreAnchorEl}
+        isMenuOpen={isMenuOpen}
+        handleMenuClose={handleMenuClose}
+        handleOpenModel={handleOpenModel}
+        handleDeleteTask={handleDeleteTask}
+        task={task}
+      />
+
+      <TaskModal
+        task={task}
+        openModal={openModal}
+        handleCloseModel={handleCloseModel}
+        mode={mode}
+        //handleUpdateBoard={handleUpdateBoard}
+      />
     </Grid>
   )
 }

@@ -1,7 +1,7 @@
 import * as React from 'react'
 import '../css/task.css'
 import Task from '../components/task/Task'
-import { Grid, Typography, Container } from '@mui/material'
+import { Grid, Typography } from '@mui/material'
 
 const Tasks = ({ tasks, boardId, setTasks, mode }) => {
   const completeTask = (task) => {
@@ -35,6 +35,15 @@ const Tasks = ({ tasks, boardId, setTasks, mode }) => {
     setTasks(updatedTasks)
   }
 
+  const handleDeleteTask = (deleteTask) => {
+    const updatedTasks = tasks.filter((task) => task.id !== deleteTask.id)
+
+    fetch(`http://localhost:9393/tasks/${deleteTask.id}`, {
+      method: 'DELETE',
+    })
+    setTasks(updatedTasks)
+  }
+
   return (
     <Grid container>
       {tasks.length !== 0 ? (
@@ -45,6 +54,7 @@ const Tasks = ({ tasks, boardId, setTasks, mode }) => {
             mode={mode}
             completeTask={completeTask}
             updateTask={updateTask}
+            handleDeleteTask={handleDeleteTask}
           />
         ))
       ) : (
