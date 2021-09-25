@@ -33,8 +33,8 @@ const BoardModal = ({
       className='modal'
       open={openModal}
       onClose={handleCloseModel}
-      aria-labelledby='modal-edit-project'
-      aria-describedby='modal-edit-project-name-color'>
+      aria-labelledby='modal-edit-board'
+      aria-describedby='modal-edit-board-name'>
       <div
         className='modal-body edit-modal b-radius'
         style={{ background: !mode ? '#212121' : '#fff' }}>

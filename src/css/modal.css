@@ -18,6 +18,10 @@ position: absolute;
     padding-top: 2em;
 }
 
+.details-form .MuiButton-root{
+    float: right;
+}
+
 .form.MuiFormLabel-root{
     padding: 1em 0;
 }
@@ -30,3 +34,26 @@ position: absolute;
     margin-left: 0;
     margin-right: 5px;
 }
+
+.modal-body.edit-modal{
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.task-input.MuiFormGroup-root{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 1em 0;
+
+}
+
+.task-input label {
+    padding-right: 1em;
+}
+
+.task-input label + .MuiInput-root{
+    margin: 0;
+}
+

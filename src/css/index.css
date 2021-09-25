@@ -16,6 +16,14 @@
     border-radius: 10px;
 }
 
+.padding-top{
+    padding-top: 2em;
+}
+
+.padding-bottom-lg{
+    padding-bottom: 3em;
+}
+
 .flex{
     display: flex;
     align-items: center;

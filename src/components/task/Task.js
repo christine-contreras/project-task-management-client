@@ -1,8 +1,8 @@
-import React from 'react'
+import * as React from 'react'
 import { changeDate } from '../../helpers/changeDate'
 import { priorityColor, statusColor } from '../../helpers/taskTags'
 import TaskMenu from './TaskMenu'
-import TaskModal from '../modal/TaskModal'
+import TaskUpdateModal from '../modal/TaskUpdateModal'
 import {
   Card,
   Container,
@@ -22,6 +22,12 @@ import ScheduleIcon from '@mui/icons-material/Schedule'
 
 const Task = ({ task, mode, completeTask, updateTask, handleDeleteTask }) => {
   const { name, due_date, priority, status } = task
+
+  // React.useEffect(() => {
+  //   const formattedDate = changeDate(due_date)
+  // }, [task])
+
+  const formattedDate = changeDate(due_date)
 
   //task menu to see more options
   const [moreAnchorEl, setMoreAnchorEl] = React.useState(null)
@@ -76,9 +82,7 @@ const Task = ({ task, mode, completeTask, updateTask, handleDeleteTask }) => {
               <IconButton size='small'>
                 <ScheduleIcon fontSize='inherit' />
               </IconButton>
-              <Typography variant='subtitle2'>
-                {changeDate(due_date)}
-              </Typography>
+              <Typography variant='subtitle2'>{formattedDate}</Typography>
             </Grid>
 
             <Grid item container className='task-callouts flex'>
@@ -103,12 +107,12 @@ const Task = ({ task, mode, completeTask, updateTask, handleDeleteTask }) => {
         task={task}
       />
 
-      <TaskModal
-        task={task}
+      <TaskUpdateModal
         openModal={openModal}
         handleCloseModel={handleCloseModel}
         mode={mode}
-        //handleUpdateBoard={handleUpdateBoard}
+        task={task}
+        updateTask={updateTask}
       />
     </Grid>
   )
