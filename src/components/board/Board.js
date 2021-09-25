@@ -1,6 +1,7 @@
 import * as React from 'react'
 import BoardMenu from './BoardMenu'
 import BoardModal from '../modal/BoardModal'
+import TaskModal from '../modal/TaskModal'
 import Tasks from '../../containers/Tasks'
 import {
   Grid,
@@ -39,10 +40,39 @@ const Board = ({
     setMoreAnchorEl(null)
   }
 
-  //handle edit modal
-  const [openModal, setOpenModal] = React.useState(false)
-  const handleOpenModel = () => setOpenModal(true)
-  const handleCloseModel = () => setOpenModal(false)
+  //handle edit board modal
+  const [openBoardModal, setOpenBoardModal] = React.useState(false)
+  const handleOpenBoardModel = () => setOpenBoardModal(true)
+  const handleCloseBoardModel = () => setOpenBoardModal(false)
+
+  // handle new task
+  const handleCreateTask = (newTask) => {
+    fetch('http://localhost:9393/tasks/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        accept: 'application/json',
+      },
+      body: JSON.stringify({
+        board_id: id,
+        completed: newTask.completed,
+        description: newTask.description,
+        due_date: newTask.due_date,
+        name: newTask.name,
+        priority: newTask.priority,
+        status: newTask.status,
+      }),
+    })
+
+    setTasks((prevTasks) => {
+      return [...prevTasks, newTask]
+    })
+  }
+
+  //handle create task modal
+  const [openTaskModal, setOpenTaskModal] = React.useState(false)
+  const handleOpenTaskModel = () => setOpenTaskModal(true)
+  const handleCloseTaskModel = () => setOpenTaskModal(false)
 
   return (
     <Grid
@@ -76,7 +106,7 @@ const Board = ({
       <Button
         className='btn-add'
         color='inherit'
-        onClick={console.log}
+        onClick={handleOpenTaskModel}
         startIcon={<AddIcon />}
         variant='outlined'>
         Add Task
@@ -86,17 +116,25 @@ const Board = ({
         moreAnchorEl={moreAnchorEl}
         isMenuOpen={isMenuOpen}
         handleMenuClose={handleMenuClose}
-        handleOpenModel={handleOpenModel}
+        handleOpenModel={handleOpenBoardModel}
         handleDeleteBoard={handleDeleteBoard}
         board={board}
       />
 
       <BoardModal
         board={board}
-        openModal={openModal}
-        handleCloseModel={handleCloseModel}
+        openModal={openBoardModal}
+        handleCloseModel={handleCloseBoardModel}
         mode={mode}
         handleUpdateBoard={handleUpdateBoard}
+      />
+
+      <TaskModal
+        openModal={openTaskModal}
+        handleCloseModel={handleCloseTaskModel}
+        mode={mode}
+        task={null}
+        handleCreateTask={handleCreateTask}
       />
     </Grid>
   )

@@ -22,15 +22,19 @@ const TaskModal = ({
   openModal,
   handleCloseModel,
   updateTask,
-  //   handleCreateBoard,
+  handleCreateTask,
   mode,
 }) => {
-  const [name, setName] = React.useState(task.name)
+  const [name, setName] = React.useState(task ? task.name : '')
   //change to input task date
-  const [date, setDate] = React.useState(changeDate(task.due_date))
-  const [status, setStatus] = React.useState(task.status)
-  const [priority, setPriority] = React.useState(task.priority)
-  const [description, setDescription] = React.useState(task.description)
+  const [date, setDate] = React.useState(
+    task ? changeDate(task.due_date) : Date.now()
+  )
+  const [status, setStatus] = React.useState(task ? task.status : 'Not Started')
+  const [priority, setPriority] = React.useState(task ? task.priority : 'Low')
+  const [description, setDescription] = React.useState(
+    task ? task.description : ''
+  )
 
   const status_options = [
     'Not Started',
@@ -56,9 +60,19 @@ const TaskModal = ({
       }
       updateTask(updatedTask)
     } else {
-      const newTask = { name: name }
-      //   handleCreateBoard(newTask)
+      const newTask = {
+        name: name,
+        due_date: changeDateToApiFormat(date),
+        status: status,
+        priority: priority,
+        description: description,
+      }
+      handleCreateTask(newTask)
       setName('')
+      setDate(Date.now())
+      setStatus('Not Started')
+      setPriority('Low')
+      setDescription('')
     }
 
     handleCloseModel()
@@ -163,7 +177,7 @@ const TaskModal = ({
               />
             </div>
 
-            <SaveButton title='Save Task' />
+            <SaveButton title={task ? 'Save Task' : 'Create Task'} />
           </form>
         </div>
       </LocalizationProvider>

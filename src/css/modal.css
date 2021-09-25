@@ -18,7 +18,7 @@ position: absolute;
     padding-top: 2em;
 }
 
-.details-form .MuiButton-root{
+.details-form .MuiButton-root, .task-form .MuiButton-root{
     float: right;
 }
 

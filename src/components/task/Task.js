@@ -2,7 +2,7 @@ import * as React from 'react'
 import { changeDate } from '../../helpers/changeDate'
 import { priorityColor, statusColor } from '../../helpers/taskTags'
 import TaskMenu from './TaskMenu'
-import TaskUpdateModal from '../modal/TaskUpdateModal'
+import TaskModal from '../modal/TaskModal'
 import {
   Card,
   Container,
@@ -22,10 +22,6 @@ import ScheduleIcon from '@mui/icons-material/Schedule'
 
 const Task = ({ task, mode, completeTask, updateTask, handleDeleteTask }) => {
   const { name, due_date, priority, status } = task
-
-  // React.useEffect(() => {
-  //   const formattedDate = changeDate(due_date)
-  // }, [task])
 
   const formattedDate = changeDate(due_date)
 
@@ -107,7 +103,7 @@ const Task = ({ task, mode, completeTask, updateTask, handleDeleteTask }) => {
         task={task}
       />
 
-      <TaskUpdateModal
+      <TaskModal
         openModal={openModal}
         handleCloseModel={handleCloseModel}
         mode={mode}
