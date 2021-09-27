@@ -4,13 +4,14 @@ import { Menu, MenuItem, IconButton } from '@mui/material'
 import CreateIcon from '@mui/icons-material/Create'
 import DeleteIcon from '@mui/icons-material/Delete'
 
-const ProjectMenu = ({
+const DropdownMenu = ({
   moreAnchorEl,
   isMenuOpen,
   handleMenuClose,
   handleOpenModel,
-  handleDeleteProject,
-  project,
+  handleDelete,
+  component,
+  componentType,
 }) => {
   return (
     <Menu
@@ -28,19 +29,25 @@ const ProjectMenu = ({
       open={isMenuOpen}
       onClose={handleMenuClose}>
       <MenuItem onClick={handleOpenModel}>
-        <IconButton size='large' aria-label='edit project' color='inherit'>
+        <IconButton
+          size='large'
+          aria-label={`edit ${componentType}`}
+          color='inherit'>
           <CreateIcon />
         </IconButton>
-        <p>Edit Project Details</p>
+        <p>{`Edit ${componentType} Details`}</p>
       </MenuItem>
-      <MenuItem onClick={() => handleDeleteProject(project)}>
-        <IconButton size='large' aria-label='delete project' color='inherit'>
+      <MenuItem onClick={() => handleDelete(component)}>
+        <IconButton
+          size='large'
+          aria-label={`delete ${componentType}`}
+          color='inherit'>
           <DeleteIcon />
         </IconButton>
-        <p>Delete Project</p>
+        <p>{`Delete ${componentType}`}</p>
       </MenuItem>
     </Menu>
   )
 }
 
-export default ProjectMenu
+export default DropdownMenu

@@ -11,7 +11,7 @@ const Projects = ({
   handleUpdatingProject,
   handleDeleteProject,
 }) => {
-  //handle edit modal
+  //handle edit project modal
   const [openModal, setOpenModal] = React.useState(false)
   const handleOpenModel = () => setOpenModal(true)
   const handleCloseModel = () => setOpenModal(false)

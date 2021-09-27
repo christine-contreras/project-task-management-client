@@ -1,5 +1,5 @@
 import * as React from 'react'
-import BoardMenu from './BoardMenu'
+import DropdownMenu from '../DropdownMenu'
 import BoardModal from '../modal/BoardModal'
 import TaskModal from '../modal/TaskModal'
 import Tasks from '../../containers/Tasks'
@@ -112,13 +112,14 @@ const Board = ({
         Add Task
       </Button>
       {/* popups */}
-      <BoardMenu
+      <DropdownMenu
         moreAnchorEl={moreAnchorEl}
         isMenuOpen={isMenuOpen}
         handleMenuClose={handleMenuClose}
         handleOpenModel={handleOpenBoardModel}
-        handleDeleteBoard={handleDeleteBoard}
-        board={board}
+        handleDelete={handleDeleteBoard}
+        component={board}
+        componentType='Board'
       />
 
       <BoardModal

@@ -43,10 +43,6 @@ const Layout = ({
       <Box
         component='main'
         sx={{
-          //   backgroundColor: (theme) =>
-          //     theme.palette.mode === 'light'
-          //       ? theme.palette.grey[100]
-          //       : theme.palette.grey[900],
           height: '100vh',
           width: { xs: '100%', sm: `calc(100% - ${drawerWidth}px)` },
           ml: { sm: `${drawerWidth}px` },
@@ -56,7 +52,9 @@ const Layout = ({
         <Container maxWidth='xl' sx={{ flexGrow: 1, p: 3 }}>
           <Grid container spacing={3}>
             <Grid item xs={12}>
-              <Paper className='container-paper'>{children}</Paper>
+              <Paper className='container-paper' sx={{ height: '80vh' }}>
+                {children}
+              </Paper>
             </Grid>
           </Grid>
         </Container>

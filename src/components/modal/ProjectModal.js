@@ -16,6 +16,12 @@ const ProjectModal = ({
 }) => {
   const [title, setTitle] = React.useState(project ? project.title : '')
   const [color, setColor] = React.useState(project ? project.color : '')
+
+  React.useEffect(() => {
+    setTitle(project ? project.title : '')
+    setColor(project ? project.color : '')
+  }, [project])
+
   const handleSubmit = (event) => {
     event.preventDefault()
 

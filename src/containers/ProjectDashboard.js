@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { ProjectColors } from '../helpers/ProjectColors'
-import ProjectMenu from '../components/project/ProjectMenu'
+import DropdownMenu from '../components/DropdownMenu'
 import ProjectModal from '../components/modal/ProjectModal'
 import Boards from './Boards'
 import {
@@ -119,13 +119,14 @@ const ProjectDashboard = ({
                 </Tooltip>
               </Box>
 
-              <ProjectMenu
+              <DropdownMenu
                 moreAnchorEl={moreAnchorEl}
                 isMenuOpen={isMenuOpen}
                 handleMenuClose={handleMenuClose}
                 handleOpenModel={handleOpenModel}
-                handleDeleteProject={handleDelete}
-                project={project}
+                handleDelete={handleDelete}
+                component={project}
+                componentType='Project'
               />
 
               <ProjectModal

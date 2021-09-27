@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { changeDate } from '../../helpers/changeDate'
 import { priorityColor, statusColor } from '../../helpers/taskTags'
-import TaskMenu from './TaskMenu'
+import DropdownMenu from '../DropdownMenu'
 import TaskModal from '../modal/TaskModal'
 import {
   Card,
@@ -94,13 +94,14 @@ const Task = ({ task, mode, completeTask, updateTask, handleDeleteTask }) => {
       </Card>
 
       {/* popups */}
-      <TaskMenu
+      <DropdownMenu
         moreAnchorEl={moreAnchorEl}
         isMenuOpen={isMenuOpen}
         handleMenuClose={handleMenuClose}
         handleOpenModel={handleOpenModel}
-        handleDeleteTask={handleDeleteTask}
-        task={task}
+        handleDelete={handleDeleteTask}
+        component={task}
+        componentType='Task'
       />
 
       <TaskModal

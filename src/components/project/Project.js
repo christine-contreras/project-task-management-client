@@ -1,8 +1,8 @@
 import * as React from 'react'
 import '../../css/project.css'
 import { ProjectColors } from '../../helpers/ProjectColors'
+import DropdownMenu from '../DropdownMenu'
 import ProjectModal from '../modal/ProjectModal'
-import ProjectMenu from './ProjectMenu'
 import { Link } from 'react-router-dom'
 import LinearProgressWithLabel from './LinearProgressWithLabel'
 import {
@@ -12,7 +12,6 @@ import {
   Typography,
   IconButton,
   Grid,
-  Box,
   Tooltip,
 } from '@mui/material'
 import MoreVertIcon from '@mui/icons-material/MoreVert'
@@ -98,13 +97,14 @@ const Project = ({
       </Card>
 
       {/* pop ups */}
-      <ProjectMenu
+      <DropdownMenu
         moreAnchorEl={moreAnchorEl}
         isMenuOpen={isMenuOpen}
         handleMenuClose={handleMenuClose}
         handleOpenModel={handleOpenModel}
-        handleDeleteProject={handleDeleteProject}
-        project={project}
+        handleDelete={handleDeleteProject}
+        component={project}
+        componentType='Project'
       />
 
       <ProjectModal
