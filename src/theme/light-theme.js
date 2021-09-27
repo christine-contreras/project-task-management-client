@@ -1,28 +1,26 @@
 import { createTheme } from '@mui/material/styles'
+import { pink, purple } from '@mui/material/colors'
 
 //https://material-ui.com/customization/default-theme/#default-theme
 //https://material-ui.com/customization/color/#color
 export const lightTheme = createTheme({
   palette: {
     mode: 'light',
-    // primary: {
-    //   light: '#a5c89a',
-    //   main: '#76976c',
-    //   dark: '#496941',
-    //   contrastText: '#fff',
-    // },
-    // secondary: {
-    //   // light: '#ff72d6',
-    //   // main: brown[900],
-    //   // dark: '#b90076',
-    //   contrastText: '#fff',
-    // },
+    primary: {
+      light: purple[300],
+      main: purple[500],
+      dark: purple[700],
+    },
+    secondary: {
+      light: pink[300],
+      main: pink[500],
+      dark: pink[700],
+    },
     text: {
       primary: '#1f1c2e',
     },
     background: {
       default: '#f3f6fd',
-      // paper: '#f3f6fd',
     },
   },
   typography: {

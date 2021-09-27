@@ -6,6 +6,7 @@ import { ThemeProvider, createTheme } from '@mui/material/styles'
 import CssBaseline from '@mui/material/CssBaseline'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 
+import Login from './containers/Login'
 import Projects from './containers/Projects'
 import ProjectDashboard from './containers/ProjectDashboard'
 
@@ -100,6 +101,11 @@ const App = () => {
             projects={projects}
             search={search}
             setSearch={setSearch}>
+            <Route
+              exact
+              path='/'
+              render={(routerProps) => <Login {...routerProps} />}
+            />
             <Route
               exact
               path='/projects'

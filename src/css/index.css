@@ -20,6 +20,10 @@
     padding-top: 2em;
 }
 
+.padding-bottom{
+    padding-bottom: 2em;
+}
+
 .padding-bottom-lg{
     padding-bottom: 3em;
 }
@@ -51,4 +55,16 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+.home-container .logo svg{
+    width: 5em;
+}
+
+.title-thin.MuiTypography-root {
+    font-size: 1.25em;
+}
+
+.btn-login.MuiButton-root{
+    min-width: 250px;
 }
