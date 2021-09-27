@@ -3,6 +3,7 @@ import Project from '../components/project/Project'
 import ProjectModal from '../components/modal/ProjectModal'
 import { Typography, Grid, IconButton, Tooltip, Box } from '@mui/material'
 import ControlPointIcon from '@mui/icons-material/ControlPoint'
+import Skeleton from '@mui/material/Skeleton'
 
 const Projects = ({
   projects,
@@ -35,7 +36,7 @@ const Projects = ({
         </Box>
       </Grid>
       <Grid container spacing={2}>
-        {projects
+        {projects.length !== 0
           ? projects.map((project) => (
               <Project
                 mode={mode}
@@ -45,7 +46,19 @@ const Projects = ({
                 handleDeleteProject={handleDeleteProject}
               />
             ))
-          : null}
+          : [1, 2, 3].map((load) => {
+              debugger
+              return (
+                <Grid item xs={12} sm={12} md={6} lg={4} key={`load-${load}`}>
+                  <Skeleton />
+                  <Skeleton
+                    sx={{ height: 100 }}
+                    animation='wave'
+                    variant='rectangular'
+                  />
+                </Grid>
+              )
+            })}
 
         {/* create new project modal */}
         <ProjectModal

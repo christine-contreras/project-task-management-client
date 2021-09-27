@@ -11,6 +11,7 @@ import {
   Box,
   Container,
 } from '@mui/material'
+import Skeleton from '@mui/material/Skeleton'
 import MoreVertIcon from '@mui/icons-material/MoreVert'
 import StarBorderIcon from '@mui/icons-material/StarBorder'
 import StarIcon from '@mui/icons-material/Star'
@@ -75,7 +76,7 @@ const ProjectDashboard = ({
 
   return (
     <>
-      {project && (
+      {project.length !== 0 ? (
         <>
           <Container maxWidth='xl' sx={{ height: '80vh' }}>
             <Grid
@@ -148,6 +149,37 @@ const ProjectDashboard = ({
             />
           </Container>
         </>
+      ) : (
+        <Container maxWidth='xl' sx={{ height: '80vh' }}>
+          <Grid
+            item
+            container
+            alignContent='center'
+            justifyContent='space-between'
+            sx={{ pb: 6 }}>
+            <Skeleton width='60%' />
+          </Grid>
+          <Grid container spacing={2}>
+            {[1, 2, 3].map((load) => {
+              return (
+                <Grid
+                  item
+                  xs={12}
+                  sm={12}
+                  md={6}
+                  lg={4}
+                  key={`loadboard-${load}`}>
+                  <Skeleton />
+                  <Skeleton
+                    sx={{ height: 400 }}
+                    animation='wave'
+                    variant='rectangular'
+                  />
+                </Grid>
+              )
+            })}
+          </Grid>
+        </Container>
       )}
     </>
   )
