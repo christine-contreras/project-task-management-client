@@ -6,14 +6,21 @@ import { Logo } from './Logo'
 import { Link } from 'react-router-dom'
 import { Typography, Toolbar, Divider } from '@mui/material'
 import { Drawer } from '@mui/material'
+import { useHistory } from 'react-router-dom'
 
 const drawerWidth = 240
 
-const Navigation = ({ projects, favorites, mode }) => {
+const Navigation = ({ projects, favorites, mode, fetchProjects }) => {
+  let history = useHistory()
+  const handleHomeClick = (event) => {
+    history.push('/projects')
+    fetchProjects()
+  }
+
   return (
     <>
       <Toolbar className='flex'>
-        <Link to='/projects' exact className='flex link'>
+        <a onClick={handleHomeClick} href='#' className='flex link'>
           <Logo />
           <Typography
             className='letter-spacing'
@@ -24,7 +31,7 @@ const Navigation = ({ projects, favorites, mode }) => {
             align='center'>
             Mercury
           </Typography>
-        </Link>
+        </a>
       </Toolbar>
       <FavoriteList list={favorites} />
 
@@ -35,7 +42,14 @@ const Navigation = ({ projects, favorites, mode }) => {
   )
 }
 
-const SideNav = ({ open, toggleDrawer, window, projects, mode }) => {
+const SideNav = ({
+  open,
+  toggleDrawer,
+  window,
+  projects,
+  mode,
+  fetchProjects,
+}) => {
   const container =
     window !== undefined ? () => window().document.body : undefined
 
@@ -61,7 +75,12 @@ const SideNav = ({ open, toggleDrawer, window, projects, mode }) => {
             width: drawerWidth,
           },
         }}>
-        <Navigation projects={projects} favorites={favorites} mode={mode} />
+        <Navigation
+          projects={projects}
+          favorites={favorites}
+          mode={mode}
+          fetchProjects={fetchProjects}
+        />
       </Drawer>
 
       {/* desktop */}
@@ -80,7 +99,12 @@ const SideNav = ({ open, toggleDrawer, window, projects, mode }) => {
           },
         }}
         open>
-        <Navigation projects={projects} favorites={favorites} mode={mode} />
+        <Navigation
+          projects={projects}
+          favorites={favorites}
+          mode={mode}
+          fetchProjects={fetchProjects}
+        />
       </Drawer>
     </>
   )

@@ -100,7 +100,8 @@ const App = () => {
             mode={mode}
             projects={projects}
             search={search}
-            setSearch={setSearch}>
+            setSearch={setSearch}
+            fetchProjects={fetchProjects}>
             <Route
               exact
               path='/'

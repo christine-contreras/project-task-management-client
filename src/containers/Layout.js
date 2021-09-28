@@ -17,6 +17,7 @@ const Layout = ({
   projects,
   search,
   setSearch,
+  fetchProjects,
 }) => {
   const [open, setOpen] = React.useState(false)
 
@@ -45,6 +46,7 @@ const Layout = ({
             toggleDrawer={toggleDrawer}
             projects={projects}
             mode={mode}
+            fetchProjects={fetchProjects}
           />
 
           <Box

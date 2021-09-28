@@ -71,7 +71,7 @@ const Task = ({ task, mode, completeTask, updateTask, handleDeleteTask }) => {
         </CardActionArea>
         <CardContent>
           <Grid container flexDirection='column' className='flex'>
-            <Typography variant='subtitle1' component='h4'>
+            <Typography variant='subtitle1' component='h4' align='center'>
               {name}
             </Typography>
             <Grid className='flex'>

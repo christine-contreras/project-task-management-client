@@ -8,6 +8,7 @@
 
 .board.MuiGrid-root{
     min-width: 350px;
+    width: 350px;
     min-height: 200px;
     padding: 10px;
     margin-right: 2em;

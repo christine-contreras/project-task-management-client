@@ -78,7 +78,7 @@ const ProjectDashboard = ({
     <>
       {project.length !== 0 ? (
         <>
-          <Container maxWidth='xl' sx={{ height: '80vh' }}>
+          <Container maxWidth='xl' sx={{ height: '80vh', overflow: 'scroll' }}>
             <Grid
               item
               container
