@@ -25,8 +25,6 @@ const TaskModal = ({
   handleCreateTask,
   mode,
   boards,
-  currentBoard,
-  currentBoardName,
   currentBoardId,
 }) => {
   const [name, setName] = React.useState(task ? task.name : '')

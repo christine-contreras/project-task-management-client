@@ -9,7 +9,7 @@ export const changeDateToApiFormat = (date) => {
   return dateFormat(date, 'yyyy-mm-dd')
 }
 
-const parseDate = (date) => {
+export const parseDate = (date) => {
   let parts = date.split('-')
   // new Date(year, month [, day [, hours[, minutes[, seconds[, ms]]]]])
   return new Date(parts[0], parts[1] - 1, parts[2])

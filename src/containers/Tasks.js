@@ -1,18 +1,39 @@
 import * as React from 'react'
 import '../css/task.css'
+import { parseDate } from '../helpers/changeDate'
 import Task from '../components/task/Task'
 import { Grid, Typography } from '@mui/material'
 
 const Tasks = ({
   tasks,
-  currentBoard,
   setTasks,
   fetchProject,
   mode,
   boards,
   currentBoardId,
-  currentBoardName,
 }) => {
+  const [completedTasks, setCompletedTasks] = React.useState([])
+  const [incompleteTasks, setIncompleteTasks] = React.useState([])
+
+  React.useEffect(() => {
+    setCompletedTasks(
+      tasks
+        ? tasks
+            .filter((task) => task.completed === true)
+            .sort((a, b) => parseDate(a.due_date) - parseDate(b.due_date))
+        : []
+    )
+    setIncompleteTasks(
+      tasks
+        ? tasks
+            .filter((task) => task.completed === false)
+            .sort((a, b) => parseDate(a.due_date) - parseDate(b.due_date))
+        : []
+    )
+  }, [tasks])
+
+  const newTaskOrder = [incompleteTasks, completedTasks].flat()
+
   const completeTask = (task) => {
     const updatedTask = { ...task, completed: !task.completed }
 
@@ -59,15 +80,14 @@ const Tasks = ({
 
   return (
     <Grid container>
-      {tasks.length !== 0 ? (
-        tasks.map((task) => (
+      {newTaskOrder.length !== 0 ? (
+        newTaskOrder.map((task) => (
           <Task
             task={task}
             key={`task-${task.id}`}
             mode={mode}
             boards={boards}
             currentBoardId={currentBoardId}
-            currentBoardName={currentBoardName}
             completeTask={completeTask}
             updateTask={updateTask}
             handleDeleteTask={handleDeleteTask}

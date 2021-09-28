@@ -27,8 +27,6 @@ const Task = ({
   updateTask,
   handleDeleteTask,
   boards,
-  currentBoard,
-  currentBoardName,
   currentBoardId,
 }) => {
   const { name, due_date, priority, status } = task
@@ -120,9 +118,7 @@ const Task = ({
         mode={mode}
         task={task}
         boards={boards}
-        currentBoard={currentBoard}
         currentBoardId={currentBoardId}
-        currentBoardName={currentBoardName}
         updateTask={updateTask}
       />
     </Grid>

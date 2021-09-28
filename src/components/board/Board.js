@@ -105,8 +105,6 @@ const Board = ({
       <Tasks
         tasks={tasks}
         currentBoardId={id}
-        currentBoardName={name}
-        currentBoard={{ id: id, name: name }}
         mode={mode}
         setTasks={setTasks}
         boards={boards}
