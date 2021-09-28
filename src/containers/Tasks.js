@@ -3,7 +3,16 @@ import '../css/task.css'
 import Task from '../components/task/Task'
 import { Grid, Typography } from '@mui/material'
 
-const Tasks = ({ tasks, boardId, setTasks, mode }) => {
+const Tasks = ({
+  tasks,
+  currentBoard,
+  setTasks,
+  fetchProject,
+  mode,
+  boards,
+  currentBoardId,
+  currentBoardName,
+}) => {
   const completeTask = (task) => {
     const updatedTask = { ...task, completed: !task.completed }
 
@@ -22,7 +31,7 @@ const Tasks = ({ tasks, boardId, setTasks, mode }) => {
         accept: 'application/json',
       },
       body: JSON.stringify({
-        board_id: boardId,
+        board_id: updatedTask.board_id,
         completed: updatedTask.completed,
         description: updatedTask.description,
         due_date: updatedTask.due_date,
@@ -30,6 +39,10 @@ const Tasks = ({ tasks, boardId, setTasks, mode }) => {
         priority: updatedTask.priority,
         status: updatedTask.status,
       }),
+    }).then(() => {
+      if (updatedTask.board_id !== currentBoardId) {
+        fetchProject()
+      }
     })
 
     setTasks(updatedTasks)
@@ -52,6 +65,9 @@ const Tasks = ({ tasks, boardId, setTasks, mode }) => {
             task={task}
             key={`task-${task.id}`}
             mode={mode}
+            boards={boards}
+            currentBoardId={currentBoardId}
+            currentBoardName={currentBoardName}
             completeTask={completeTask}
             updateTask={updateTask}
             handleDeleteTask={handleDeleteTask}

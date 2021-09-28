@@ -20,7 +20,17 @@ import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline'
 import CheckCircleIcon from '@mui/icons-material/CheckCircle'
 import ScheduleIcon from '@mui/icons-material/Schedule'
 
-const Task = ({ task, mode, completeTask, updateTask, handleDeleteTask }) => {
+const Task = ({
+  task,
+  mode,
+  completeTask,
+  updateTask,
+  handleDeleteTask,
+  boards,
+  currentBoard,
+  currentBoardName,
+  currentBoardId,
+}) => {
   const { name, due_date, priority, status } = task
 
   const formattedDate = changeDate(due_date)
@@ -109,6 +119,10 @@ const Task = ({ task, mode, completeTask, updateTask, handleDeleteTask }) => {
         handleCloseModel={handleCloseModel}
         mode={mode}
         task={task}
+        boards={boards}
+        currentBoard={currentBoard}
+        currentBoardId={currentBoardId}
+        currentBoardName={currentBoardName}
         updateTask={updateTask}
       />
     </Grid>

@@ -16,6 +16,8 @@ import AddIcon from '@mui/icons-material/Add'
 
 const Board = ({
   board,
+  boards,
+  fetchProject,
   handleDeleteBoard,
   handleUpdateBoard,
   colors,
@@ -100,7 +102,16 @@ const Board = ({
         </Box>
       </Grid>
 
-      <Tasks tasks={tasks} boardId={id} mode={mode} setTasks={setTasks} />
+      <Tasks
+        tasks={tasks}
+        currentBoardId={id}
+        currentBoardName={name}
+        currentBoard={{ id: id, name: name }}
+        mode={mode}
+        setTasks={setTasks}
+        boards={boards}
+        fetchProject={fetchProject}
+      />
 
       {/* add task button */}
       <Button

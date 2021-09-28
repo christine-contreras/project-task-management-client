@@ -24,8 +24,13 @@ const TaskModal = ({
   updateTask,
   handleCreateTask,
   mode,
+  boards,
+  currentBoard,
+  currentBoardName,
+  currentBoardId,
 }) => {
   const [name, setName] = React.useState(task ? task.name : '')
+  const [boardId, setBoardId] = React.useState(currentBoardId)
   //change to input task date
   const [date, setDate] = React.useState(
     task ? changeDate(task.due_date) : Date.now()
@@ -53,6 +58,7 @@ const TaskModal = ({
       const updatedTask = {
         ...task,
         name: name,
+        board_id: boardId,
         due_date: changeDateToApiFormat(date),
         status: status,
         priority: priority,
@@ -62,6 +68,7 @@ const TaskModal = ({
     } else {
       const newTask = {
         name: name,
+        board_id: boardId,
         due_date: changeDateToApiFormat(date),
         status: status,
         priority: priority,
@@ -73,6 +80,7 @@ const TaskModal = ({
       setStatus('Not Started')
       setPriority('Low')
       setDescription('')
+      setBoard(currentBoardId)
     }
 
     handleCloseModel()
@@ -108,6 +116,28 @@ const TaskModal = ({
             onSubmit={handleSubmit}
             className='form task-form padding-top'>
             <TitleField title={name} setTitle={setName} labelName='Task Name' />
+
+            <FormGroup className='task-input'>
+              <InputLabel id='board-label'>Board:</InputLabel>
+              <Select
+                labelId='board-label'
+                id='board-select'
+                value={boardId}
+                label='board'
+                variant='standard'
+                onChange={(event) => setBoardId(event.target.value)}>
+                {boards
+                  ? boards.map((b) => {
+                      return (
+                        <MenuItem value={b.id} key={`board-option-${b.id}`}>
+                          {b.name}
+                        </MenuItem>
+                      )
+                    })
+                  : null}
+              </Select>
+            </FormGroup>
+
             <FormGroup className='task-input'>
               <InputLabel id='dueDate'>Due Date:</InputLabel>
               <DatePicker

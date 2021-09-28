@@ -72,6 +72,8 @@ const Boards = ({
             <Board
               key={`board-${board.id}`}
               board={board}
+              boards={boards}
+              fetchProject={fetchProject}
               mode={mode}
               colors={colors}
               handleUpdateBoard={handleUpdateBoard}
