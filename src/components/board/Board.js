@@ -144,6 +144,8 @@ const Board = ({
         handleCloseModel={handleCloseTaskModel}
         mode={mode}
         task={null}
+        currentBoardId={id}
+        boards={boards}
         handleCreateTask={handleCreateTask}
       />
     </Grid>

@@ -84,11 +84,6 @@ const TaskModal = ({
     handleCloseModel()
   }
 
-  const handleChange = (event) => {
-    const newdate = changeDateToApiFormat(event)
-    debugger
-  }
-
   return (
     <Modal
       className='modal'
