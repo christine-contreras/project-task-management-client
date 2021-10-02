@@ -53,9 +53,14 @@ const Tasks = ({
   }
 
   const updateTask = (updatedTask) => {
-    const updatedTasks = tasks.map((task) =>
-      task.id === updatedTask.id ? updatedTask : task
-    )
+    let updatedTasks
+    if (updatedTask.board_id === currentBoardId) {
+      updatedTasks = tasks.map((task) =>
+        task.id === updatedTask.id ? updatedTask : task
+      )
+    } else {
+      updatedTasks = tasks.filter((task) => task.id !== updatedTask.id)
+    }
 
     fetch(`http://localhost:9393/tasks/${updatedTask.id}`, {
       method: 'PATCH',

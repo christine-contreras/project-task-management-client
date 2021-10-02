@@ -52,7 +52,7 @@ const Board = ({
       },
       body: JSON.stringify({
         board_id: id,
-        completed: false,
+        completed: newTask.completed,
         description: newTask.description,
         due_date: newTask.due_date,
         name: newTask.name,
