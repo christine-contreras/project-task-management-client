@@ -58,9 +58,13 @@ const App = () => {
         accept: 'application/json',
       },
       body: JSON.stringify(project),
-    }).then((res) => {
-      fetchProjects()
     })
+      .then((res) => res.json())
+      .then((data) => {
+        setProjects((prevProjects) => {
+          return [...prevProjects, data.project]
+        })
+      })
   }
 
   const handleDeleteProject = (deleteProject) => {

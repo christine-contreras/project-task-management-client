@@ -60,10 +60,12 @@ const Board = ({
         status: newTask.status,
       }),
     })
-
-    setTasks((prevTasks) => {
-      return [...prevTasks, newTask]
-    })
+      .then((res) => res.json())
+      .then((data) => {
+        setTasks((prevTasks) => {
+          return [...prevTasks, data.task]
+        })
+      })
   }
 
   //handle edit board modal
