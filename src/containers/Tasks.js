@@ -12,8 +12,20 @@ const Tasks = ({
   boards,
   currentBoardId,
 }) => {
-  const [completedTasks, setCompletedTasks] = React.useState([])
-  const [incompleteTasks, setIncompleteTasks] = React.useState([])
+  const [completedTasks, setCompletedTasks] = React.useState(
+    tasks
+      ? tasks
+          .filter((task) => task.completed === true)
+          .sort((a, b) => parseDate(a.due_date) - parseDate(b.due_date))
+      : []
+  )
+  const [incompleteTasks, setIncompleteTasks] = React.useState(
+    tasks
+      ? tasks
+          .filter((task) => task.completed === false)
+          .sort((a, b) => parseDate(a.due_date) - parseDate(b.due_date))
+      : []
+  )
 
   React.useEffect(() => {
     setCompletedTasks(

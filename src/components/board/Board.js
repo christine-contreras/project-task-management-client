@@ -42,11 +42,6 @@ const Board = ({
     setMoreAnchorEl(null)
   }
 
-  //handle edit board modal
-  const [openBoardModal, setOpenBoardModal] = React.useState(false)
-  const handleOpenBoardModel = () => setOpenBoardModal(true)
-  const handleCloseBoardModel = () => setOpenBoardModal(false)
-
   // handle new task
   const handleCreateTask = (newTask) => {
     fetch('http://localhost:9393/tasks/', {
@@ -57,7 +52,7 @@ const Board = ({
       },
       body: JSON.stringify({
         board_id: id,
-        completed: newTask.completed,
+        completed: false,
         description: newTask.description,
         due_date: newTask.due_date,
         name: newTask.name,
@@ -70,6 +65,11 @@ const Board = ({
       return [...prevTasks, newTask]
     })
   }
+
+  //handle edit board modal
+  const [openBoardModal, setOpenBoardModal] = React.useState(false)
+  const handleOpenBoardModel = () => setOpenBoardModal(true)
+  const handleCloseBoardModel = () => setOpenBoardModal(false)
 
   //handle create task modal
   const [openTaskModal, setOpenTaskModal] = React.useState(false)

@@ -69,6 +69,7 @@ const TaskModal = ({
         board_id: boardId,
         due_date: changeDateToApiFormat(date),
         status: status,
+        completed: false,
         priority: priority,
         description: description,
       }
@@ -78,7 +79,7 @@ const TaskModal = ({
       setStatus('Not Started')
       setPriority('Low')
       setDescription('')
-      setBoard(currentBoardId)
+      setBoardId(currentBoardId)
     }
 
     handleCloseModel()
