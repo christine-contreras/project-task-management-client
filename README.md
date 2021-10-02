@@ -1,41 +1,66 @@
-# Create React App example with styled-components
+# Project Task Management App
 
-## How to use
+This project management app lets you organize projects into boards and tasks.
 
-Download the example [or clone the repo](https://github.com/mui-org/material-ui):
+## Front-end Project Task Management Interface
 
-<!-- #default-branch-switch -->
+You can use this app in conjunction with my project management API [see the repo](https://github.com/christine-contreras/project-task-management-api)
+
+## Technologies Used In This App
+
+- JavaScript
+- React
+- Mui
+- Custom API Server
+
+## How To Use
+
+Install and run:
 
 ```sh
-curl https://codeload.github.com/mui-org/material-ui/tar.gz/master | tar -xz --strip=2 material-ui-master/examples/create-react-app-with-styled-components
-cd create-react-app-with-styled-components
-```
+gem install
 
-Install it and run:
-
-```sh
-npm install
+# start up your server
+# start up react
 npm start
+
 ```
 
-## CodeSandbox
+## Features
 
-<!-- #default-branch-switch -->
+### App
 
-Note that CodeSandbox is not supporting react-app-rewired, yet you can [still see the code](https://codesandbox.io/s/github/mui-org/material-ui/tree/master/examples/create-react-app-with-styled-components).
+- implement dark mode
+- customize theme with Mui
+- ability to add user login
+- ability to add in notifications
+- navigation shows all projects and favorite projects
+- responsive design
 
-The following link leverages this demo: https://mui.com/guides/interoperability/#change-the-default-styled-engine with Parcel's alias feature within the `package.json`
+### Projects
 
-[![Edit on CodeSandbox](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/styled-components-interoperability-w9z9d)
+- Create a project
+- Favor a project
+- Update a projects color and name
+- Delete a project
+- Search projects through search bar
+- View individul projects
 
-## The idea behind the example
+### Project Dashboard
 
-This example demonstrates how you can setup [Create React App](https://github.com/facebookincubator/create-react-app) with [styled-components](https://styled-components.com/) as a style engine for your application.
+- View all project boards and tasks
+- Update/Delete project within dashboard
 
-## What's next?
+### Boards
 
-<!-- #default-branch-switch -->
+- Create a new dashboard
+- Delete a current dashboard
+- Update a dashboard's name
 
-You now have a working example project.
-You can head back to the documentation, continuing browsing it from the [templates](https://mui.com/getting-started/templates/) section.
-# project-task-management-client
+### Tasks
+
+- Organizes tasks by due date
+- Moves completed tasks to the bottom of dashboard list
+- Create new tasks
+- Delete a task
+- Update task name, due date, priority, status, and associated board
