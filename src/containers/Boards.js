@@ -54,9 +54,17 @@ const Boards = ({
         name: newBoard.name,
         project_id: projectId,
       }),
-    }).then(() => {
-      fetchProject()
     })
+      // .then((res) => {
+      //   res.json()
+      //   //fetchProject()
+      // })
+      .then((res) => res.json())
+      .then((data) => {
+        setBoards((prevBoards) => {
+          return [...prevBoards, data.board]
+        })
+      })
   }
 
   //handle create board modal
