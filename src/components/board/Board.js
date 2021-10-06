@@ -62,9 +62,13 @@ const Board = ({
     })
       .then((res) => res.json())
       .then((data) => {
-        setTasks((prevTasks) => {
-          return [...prevTasks, data.task]
-        })
+        if (tasks.length === 0) {
+          setTasks([data.task])
+        } else {
+          setTasks((prevTasks) => {
+            return [...prevTasks, data.task]
+          })
+        }
       })
   }
 

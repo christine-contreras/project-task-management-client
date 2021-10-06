@@ -55,15 +55,15 @@ const Boards = ({
         project_id: projectId,
       }),
     })
-      // .then((res) => {
-      //   res.json()
-      //   //fetchProject()
-      // })
       .then((res) => res.json())
       .then((data) => {
-        setBoards((prevBoards) => {
-          return [...prevBoards, data.board]
-        })
+        if (boards.length === 0) {
+          setBoards([data.board])
+        } else {
+          setBoards((prevBoards) => {
+            return [...prevBoards, data.board]
+          })
+        }
       })
   }
 
