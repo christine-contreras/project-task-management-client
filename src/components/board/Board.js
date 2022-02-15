@@ -44,7 +44,7 @@ const Board = ({
 
   // handle new task
   const handleCreateTask = (newTask) => {
-    fetch('http://localhost:9393/tasks/', {
+    fetch('/api/tasks/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -63,10 +63,10 @@ const Board = ({
       .then((res) => res.json())
       .then((data) => {
         if (tasks.length === 0) {
-          setTasks([data.task])
+          setTasks([data])
         } else {
           setTasks((prevTasks) => {
-            return [...prevTasks, data.task]
+            return [...prevTasks, data]
           })
         }
       })
