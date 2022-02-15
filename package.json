@@ -21,8 +21,9 @@
     "react-scripts": "latest",
     "styled-components": "latest"
   },
+  "proxy": "http://localhost:3000",
   "scripts": {
-    "start": "react-app-rewired start",
+    "start": "PORT=4000 react-scripts start",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
     "eject": "react-app-rewired eject"

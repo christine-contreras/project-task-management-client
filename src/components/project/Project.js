@@ -26,7 +26,8 @@ const Project = ({
   handleDeleteProject,
 }) => {
   // handle progress bar
-  const { tasks } = project
+  const tasks = project.boards.map((board) => board.tasks).flat()
+
   const completedTasks = tasks.filter((task) => task.completed === true)
   const progress =
     completedTasks.length === 0

@@ -32,11 +32,11 @@ const ProjectDashboard = ({
   }, [match.params.id])
 
   const fetchProject = () => {
-    fetch(`http://localhost:9393/projects/${match.params.id}`)
+    fetch(`/api/projects/${match.params.id}`)
       .then((res) => res.json())
       .then((data) => {
-        setProject(data.project)
-        setBoards(data.project.boards)
+        setProject(data)
+        setBoards(data.boards)
       })
   }
 
