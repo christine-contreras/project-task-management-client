@@ -66,7 +66,6 @@ const TopNav = ({
           />
           <SearchIcon />
         </div>
-
         <IconButton
           edge='end'
           color='inherit'
@@ -74,19 +73,18 @@ const TopNav = ({
           onClick={toggleTheme}>
           {icon}
         </IconButton>
-
-        <IconButton color='inherit'>
+        {/* <IconButton color='inherit'>
           <Badge badgeContent={4} color='secondary'>
             <NotificationsOutlinedIcon />
           </Badge>
-        </IconButton>
-        <Avatar src='https://lh3.googleusercontent.com/ogw/ADea4I7CeY53aWLoZ7OatzmqDINKOArp3Y1kU8BM2CwFuw=s32-c-mo' />
+        </IconButton> */}
+        <Avatar sx={{ bgcolor: '#f77062' }}>UN</Avatar>
         <Typography
           component='h2'
           variant='h6'
           className='letter-spacing'
           sx={{ display: { xs: 'none', sm: 'block' } }}>
-          Christine
+          User's Name
         </Typography>
       </Toolbar>
     </MuiAppBar>
