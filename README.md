@@ -2,6 +2,8 @@
 
 This project management app lets you organize projects into boards and tasks.
 
+[demo here](https://mercury-task-management-app.herokuapp.com/)
+
 ## Front-end Project Task Management Interface
 
 You can use this app in conjunction with my project management API [see the repo](https://github.com/christine-contreras/project-task-management-api)
